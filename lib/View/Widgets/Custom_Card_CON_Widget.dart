@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 import '../Screen/Contractor/Input_contractor/contract_page.dart';
 import '../Screen/Home_Owner/Input_onwer/Home_app/task_page.dart';
 import 'Custom_Button.dart';
@@ -35,7 +36,8 @@ class CustomCardCON extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Container(
-        child:  SingleChildScrollView( // Wrap with SingleChildScrollView
+        child:
+           SingleChildScrollView( // Wrap with SingleChildScrollView
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -92,12 +94,11 @@ class CustomCardCON extends StatelessWidget {
                     width: 80,
                     height: 10,
                     textcolor: 0xffffffff,
-                    text: (""),
                     backgroundColor: Color(0xff6A3BA8),
                     onPressed: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ContractPage()));                  },
+                          MaterialPageRoute(builder: (context) => ContractPage()));                  }, text: '',
 
                             ),
                         SizedBox(height: 12),
@@ -279,8 +280,8 @@ class CustomCardCON extends StatelessWidget {
 
               ],
             ),
-    ),
-      ),
-    );
+    )
+          )
+      );
   }
 }

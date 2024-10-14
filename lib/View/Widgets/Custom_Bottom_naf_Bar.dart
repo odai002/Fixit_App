@@ -1,10 +1,14 @@
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../Screen/Home_Owner/Input_onwer/Home_app/Home_page.dart';
 
 
+// ignore: must_be_immutable
 class SnackBarBody extends StatelessWidget {
   int pageIndex = 0;
+
+  SnackBarBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +17,7 @@ class SnackBarBody extends StatelessWidget {
       height: 46,
       decoration: BoxDecoration(
 
-        color: Color(0xff6A3BA8),
+        color: const Color(0xff6A3BA8),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(22),
           topRight: Radius.circular(22),
@@ -32,6 +36,10 @@ class SnackBarBody extends StatelessWidget {
         IconButton(
           enableFeedback: false,
           onPressed: () {
+            pageIndex = 0;
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()));
           },
           icon: pageIndex == 0
               ? const Icon(
@@ -48,6 +56,7 @@ class SnackBarBody extends StatelessWidget {
         IconButton(
           enableFeedback: false,
           onPressed: () {
+            pageIndex = 1;
           },
           icon: pageIndex == 1
               ? const Icon(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../../Widgets/Custom_App_bar.dart';
 import '../../../../Widgets/Custom_Bottom_naf_Bar.dart';
 import '../../../../Widgets/Custome_image_Button.dart';
@@ -20,6 +19,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       bottomNavigationBar: SnackBarBody(),
       appBar: CustomAppBar(title: ''),
@@ -30,166 +32,197 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.all(37.2),
+          padding: EdgeInsets.all(screenWidth * 0.05),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 15),
+                padding: EdgeInsets.only(top: screenHeight * 0.02),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Pick a",
-                            style: GoogleFonts.getFont(
-                              'Libre Caslon Text',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: Color(0xff000000),
+                    Flexible(child:  
+                      RichText(
+                        overflow: TextOverflow.ellipsis,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Pick a",
+                              style: GoogleFonts.getFont(
+                                'Libre Caslon Text',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff000000),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                    SizedBox(width: 5),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Service",
-                            style: GoogleFonts.getFont(
-                              'Libre Caslon Text',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: Color(0xff6A3BA8),
+                    SizedBox(width: screenWidth * 0.01),
+                    Flexible(child: 
+                      RichText(
+                        overflow: TextOverflow.ellipsis,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Service",
+                              style: GoogleFonts.getFont(
+                                'Libre Caslon Text',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff6A3BA8),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                    SizedBox(width: 5),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "that you need!",
-                            style: GoogleFonts.getFont(
-                              'Libre Caslon Text',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: Color(0xff000000),
+                    SizedBox(width: screenWidth * 0.01),
+                    Flexible(child: 
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "that you need!",
+                              style: GoogleFonts.getFont(
+                                'Libre Caslon Text',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff000000),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 44),
+                padding: EdgeInsets.only(top: screenHeight * 0.05),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildImageButton(
-                      context,
-                      'assets/1.png',
-                      'Carpenter',
-                      'Carpenter',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/1.png',
+                        'Carpenter',
+                        'Carpenter',
+                      ),
                     ),
-                    _buildImageButton(
-                      context,
-                      'assets/2.png',
-                      'Movers',
-                      'Movers',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/2.png',
+                        'Movers',
+                        'Movers',
+                      ),
                     ),
-                    _buildImageButton(
-                      context,
-                      'assets/13.jpg',
-                      'Air Conditioning',
-                      'Air Conditioning',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/13.jpg',
+                        'Air Conditioning',
+                        'Air Conditioning',
+                      ),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 33),
+                padding: EdgeInsets.only(top: screenHeight * 0.04),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildImageButton(
-                      context,
-                      'assets/14.png',
-                      'Plumbing',
-                      'Plumbing',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/14.png',
+                        'Plumbing',
+                        'Plumbing',
+                      ),
                     ),
-                    _buildImageButton(
-                      context,
-                      'assets/5.jpg',
-                      'HVAC',
-                      'HVAC',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                       'assets/5.jpg',
+                        'HVAC',
+                        'HVAC',
+                      ),
                     ),
-                    _buildImageButton(
-                      context,
-                      'assets/6.jpg',
-                      'Landscaping',
-                      'Landscaping',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/6.jpg',
+                        'Landscaping',
+                        'Landscaping',
+                      ),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 33, bottom: 33),
+                padding: EdgeInsets.only(top: screenHeight * 0.04, bottom: screenHeight * 0.04),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildImageButton(
-                      context,
-                      'assets/7.jpg',
-                      'Cleaning',
-                      'Cleaning',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/7.jpg',
+                        'Cleaning',
+                        'Cleaning',
+                      ),
                     ),
-                    _buildImageButton(
-                      context,
-                      'assets/8.jpg',
-                      'Snow Removal',
-                      'Snow Removal',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/8.jpg',
+                        'Snow Removal',
+                        'Snow Removal',
+                      ),
                     ),
-                    _buildImageButton(
-                      context,
-                      'assets/9.jpg',
-                      'Electrician',
-                      'Electrician',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/9.jpg',
+                        'Electrician',
+                        'Electrician',
+                      ),
                     ),
                   ],
                 ),
-
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 22),
+                padding: EdgeInsets.only(bottom: screenHeight * 0.03),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildImageButton(
-                      context,
-                      'assets/10.jpg',
-                      'Cleaning',
-                      'Cleaning',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/10.jpg',
+                        'Cleaning',
+                        'Cleaning',
+                      ),
                     ),
-                    _buildImageButton(
-                      context,
-                      'assets/11.jpg',
-                      'Handyman',
-                      'Handyman',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/11.jpg',
+                        'Handyman',
+                        'Handyman',
+                      ),
                     ),
-                    _buildImageButton(
-                      context,
-                      'assets/12.jpg',
-                      'Flooring',
-                      'Flooring',
+                    Expanded(child: 
+                      _buildImageButton(
+                        context,
+                        'assets/12.jpg',
+                        'Flooring',
+                        'Flooring',
+                      ),
                     ),
                   ],
                 ),
@@ -206,9 +239,9 @@ class _HomePageState extends State<HomePage> {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: ImageTextButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => CategoryPage(
+          /*/ Navigator.of(context).push(
+       MaterialPageRoute(
+          builder: (context) => (
                 email: email,
                 number: number,
                 name: name,
@@ -216,7 +249,7 @@ class _HomePageState extends State<HomePage> {
                 local: local,
               ),
             ),
-          );
+          );*/
         },
         image: AssetImage(imagePath),
         text: text,

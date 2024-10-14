@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
+import '../Screen/Home_Owner/Input_onwer/Home_app/task_page.dart';
 import 'Custom_Button.dart';
 import 'Custom_Star_widget.dart';
 
@@ -29,7 +31,7 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+      return Card(
         color: Colors.white,
         elevation: 4.0,
         shape: RoundedRectangleBorder(
@@ -81,10 +83,14 @@ class CustomCard extends StatelessWidget {
                         width: 80,
                         height: 50,
                         textcolor: 0xffffffff,
-                        text: "",
                         backgroundColor: Color(0xff6A3BA8),
                         onPressed: () {
-                        },
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Taskpage(),
+                            ),
+                          );
+                        }, text: '',
                       ),
                       SizedBox(height: 22),
                     ],
@@ -247,6 +253,6 @@ class CustomCard extends StatelessWidget {
           ),
         ),
       );
-  }
-  }
 
+  }
+}

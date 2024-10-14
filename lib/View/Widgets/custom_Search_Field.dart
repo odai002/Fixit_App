@@ -1,5 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Screen/Home_Owner/Input_onwer/Home_app/search_page.dart';
 
 class CustomSearchfield extends StatelessWidget {
   final TextEditingController controller;
@@ -8,19 +12,19 @@ class CustomSearchfield extends StatelessWidget {
   final TextCapitalization textCapitalization;
   final TextInputType inputType;
   final int maxLength;
-  final String HintText;
+  final String hintText;
 
   const CustomSearchfield({
-    Key? key,
+    super.key,
     required this.controller,
      required this.prefixIcon,
     this.obscureText = false,
     this.textCapitalization = TextCapitalization.none,
     required this.inputType,
     required this.maxLength,
-    required this.HintText,
+    required this.hintText,
 
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class CustomSearchfield extends StatelessWidget {
       elevation: 8,
       //This is the shadow color
       shadowColor: Colors.black,
-       borderRadius: BorderRadius.all(Radius.circular(8)),
+       borderRadius: const BorderRadius.all(Radius.circular(8)),
 
       child: Center(
         child: SizedBox(
@@ -51,23 +55,37 @@ class CustomSearchfield extends StatelessWidget {
             ),
 
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.only(left: 14),
+              contentPadding: const EdgeInsets.only(left: 14),
               alignLabelWithHint: true,
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
               errorBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
-              hintText: HintText,
+              hintText: hintText,
               prefixIcon: Padding(
                 padding: const EdgeInsets.only(right: 7),
                 child: Material
                   (
-                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8),topLeft: Radius.circular(8),),
-                   color: Color(0xff9B6CD7),
-                    child: Icon(Icons.search,
+                    borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(8),topLeft: Radius.circular(8),),
+                   color: const Color(0xff9B6CD7),
+                    child: InkWell(
+                      borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(8),
+                      topLeft: Radius.circular(8),
+                    ),
+                    onTap: () {
+                      /*/Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchPage(data: controller.text,)),
+                      );
+                      ),*/
+                    },
+                      child:  const Icon(Icons.search,
                       color: Colors.white,
-                      size: 21,)),
+                      size: 21,)
+                      ),
+                  ),
               ),
               isDense: true,
               counterText: "",

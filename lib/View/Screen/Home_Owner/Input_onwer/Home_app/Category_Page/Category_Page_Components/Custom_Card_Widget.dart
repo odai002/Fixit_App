@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../../../../../../Widgets/Custom_Button.dart';
 import '../../../../../../Widgets/Custom_Star_widget.dart';
+import '../../task_page.dart';
+
 
 class CustomCard extends StatelessWidget {
   @override
@@ -63,6 +66,7 @@ class CustomCard extends StatelessWidget {
                             text: 'Hire No',
                             backgroundColor: Color(0xff6A3BA8),
                             onPressed: () {
+                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>Taskpage()));
                   },
 
                           ),

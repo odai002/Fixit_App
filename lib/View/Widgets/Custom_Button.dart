@@ -3,13 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatelessWidget {
-  final double fontSize;
-  final double height;
-  final String text;
-  final Color backgroundColor;
-  final VoidCallback onPressed;
-  final double width;
-  final int textcolor;
   const CustomButton({
     Key? key,
     required this.text,
@@ -21,7 +14,13 @@ class CustomButton extends StatelessWidget {
     required this.fontSize,
 
   }) : super(key: key);
-
+  final double fontSize;
+  final double height;
+  final String text;
+  final Color backgroundColor;
+  final Function() onPressed;
+  final double width;
+  final int textcolor;
   @override
   Widget build(BuildContext context) {
     return InkWell(
