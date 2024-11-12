@@ -43,7 +43,7 @@ class _SortingSegmentedControlState extends State<SortingSegmentedControl> {
           padding: const EdgeInsets.only(right: 12,top: 10),
           child: Text(
             widget.title, // Title passed from parent
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
         ),
 

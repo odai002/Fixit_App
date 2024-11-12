@@ -8,8 +8,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../Widgets/Custom_Star_widget.dart';
 
+import 'package:flutter/material.dart';
+
+import '../../../../../../Widgets/Custom_Star_widget.dart';
 
 class CustomCard extends StatelessWidget {
   final Image image;
@@ -37,164 +39,132 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-
       color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      elevation: 6,
+      elevation: 8,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Row with Profile Picture, Name, Category, and Star Rating
+            // Row for Profile Picture, Name, Category, and Rating
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Profile Image
                 Material(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
-
                   elevation: 8,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
                   child: CircleAvatar(
-                    radius: 28,
+
+                    radius: 30,
                     backgroundImage: image.image,
                   ),
                 ),
-                SizedBox(width: 14),
+                SizedBox(width: 16),
+                // Name, Category, and Rating
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Name, Category, and Rating in one row
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              name,
-                              style: GoogleFonts.libreCaslonText(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          SizedBox(width: 8),
-                          const StarDisplayWidget(
-                            filledStar: Icon(Icons.star, color: Colors.yellow, size: 11),
-                            unfilledStar: Icon(Icons.star, color: Colors.grey, size: 11),
-                          ),
-                        ],
+                      Text(
+                        name,
+                        style: GoogleFonts.libreCaslonText(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
                       ),
-                      SizedBox(height: 4),
-
                       Text(
                         category,
                         style: GoogleFonts.libreCaslonText(
-                          fontSize: 12,
+                          fontSize: 10,
                           color: Colors.grey[600],
                         ),
                       ),
+                      SizedBox(height: 8),
+                      // Star Rating
+                      StarDisplayWidget(
+                    filledStar: Icon(Icons.star, color: Colors.yellow, size: 11),
+                    unfilledStar: Icon(Icons.star, color: Colors.grey, size: 11),),
                     ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 12),
+            // Description
+            Text(
+              desc,
+              style: GoogleFonts.libreCaslonText(
+                fontSize: 12,
+                color: Colors.grey[800],
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: 12),
+            // Location
+            Row(
+              children: [
+                Icon(Icons.location_on, size: 16, color: Color(0xff6A3BA8)),
+                SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    local,
+                    style: GoogleFonts.libreCaslonText(color: Colors.grey[600],fontSize: 12),
                   ),
                 ),
               ],
             ),
             SizedBox(height: 8),
-            // Description and Hire Button Row
+            // Email
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF6A3BA8),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-                  ),
-                  child: Text(
-                    'Hire Now',
-                    style: GoogleFonts.libreCaslonText(
-                      color: Colors.white,
-                      fontSize: 8,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 8),
-
+                Icon(Icons.email, size: 16, color: Color(0xff6A3BA8)),
+                SizedBox(width: 6),
                 Expanded(
                   child: Text(
-                    desc,
-                    style: GoogleFonts.libreCaslonText(
-                      fontSize: 12,
-                      color: Colors.grey[800],
+                    email,
+                    style: GoogleFonts.libreCaslonText(color: Colors.grey[600],fontSize: 12
                     ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-
               ],
             ),
-            SizedBox(height: 12),
-            // Bottom Row with Location, Email, and Phone
+            SizedBox(height: 8),
+            // Phone Number
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Flexible(
-                  child: Row(
-                    children: [
-                      Icon(Icons.location_on, size: 10, color: Color(0xFF6A3BA8)),
-                      SizedBox(width: 4),
-                      Expanded(
-                        child: Text(
-                          local,
-                          style: GoogleFonts.libreCaslonText(
-                            fontSize: 8,
-                            color: Colors.grey[600],
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Flexible(
-                  child: Row(
-                    children: [
-                      Icon(Icons.email, size: 10, color: Color(0xFF6A3BA8)),
-                      SizedBox(width: 4),
-                      Expanded(
-                        child: Text(
-                          email,
-                          style: GoogleFonts.libreCaslonText(
-                            fontSize: 8,
-                            color: Colors.grey[600],
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Flexible(
-                  child: Row(
-                    children: [
-                      Icon(Icons.phone, size: 10, color: Color(0xFF6A3BA8)),
-                      SizedBox(width: 4),
-                      Text(
-                        number,
-                        style: GoogleFonts.libreCaslonText(
-                          fontSize: 8,
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                    ],
-                  ),
+                Icon(Icons.phone, size: 16, color: Color(0xff6A3BA8)),
+                SizedBox(width: 6),
+                Text(
+                  number,
+                  style: GoogleFonts.libreCaslonText(color: Colors.grey[600],
+                  fontSize: 12),
                 ),
               ],
+            ),
+            SizedBox(height: 16),
+            // Hire Now Button
+            Align(
+              alignment: Alignment.centerLeft,
+              child: ElevatedButton(
+                onPressed: () {
+
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff6A3BA8), // Button color
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                ),
+                child: Text(
+                  'Hire Now',
+                  style: GoogleFonts.libreCaslonText(color: Colors.white,fontSize: 10),
+                ),
+              ),
             ),
           ],
         ),
