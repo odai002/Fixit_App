@@ -1,63 +1,75 @@
+// ignore_for_file: file_names, unused_import, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SortingSegmentedControl extends StatefulWidget {
+  final String title;
+  final String buttonCaption;
+    final Function(int) onSelectionChanged; // Callback for notifying the parent
+
+  const SortingSegmentedControl({super.key, 
+    required this.title,
+    required this.buttonCaption,
+    required this.onSelectionChanged,
+  });
+
   @override
   _SortingSegmentedControlState createState() => _SortingSegmentedControlState();
 }
 
 class _SortingSegmentedControlState extends State<SortingSegmentedControl> {
-  List<String> _items = ['Orange', 'Apple', 'Banana', 'Mango'];
-  List<bool> _isSelected = [true,  false];
+    List<bool> _isSelected = [true, false]; // Keep track of selected button
 
   void _sortItems(int index) {
     setState(() {
       for (int buttonIndex = 0; buttonIndex < _isSelected.length; buttonIndex++) {
-        if (buttonIndex == index) {
-          _isSelected[buttonIndex] = true;
-        } else {
-          _isSelected[buttonIndex] = false;
-        }
+        _isSelected[buttonIndex] = buttonIndex == index;
       }
 
-      if (index == 0) {
-        _items.sort((a, b) => a.compareTo(b)); // Alphabetical A-Z
-      } else if (index == 1) {
-        _items.sort((a, b) => b.compareTo(a)); // Reverse Alphabetical Z-A
-      }
+      // Notify the parent about the selection
+      widget.onSelectionChanged(index);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: 30),
+        // Title Text
+        Padding(
+          padding: const EdgeInsets.only(right: 12,top: 10),
+          child: Text(
+            widget.title, // Title passed from parent
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+        ),
 
+        // Toggle Buttons
         ToggleButtons(
-          borderColor: Color(0xff59308E),
-          selectedBorderColor: Color(0xff59308E),
+          borderColor: const Color(0xff59308E),
+          selectedBorderColor: const Color(0xff59308E),
           borderWidth: 1,
           selectedColor: Colors.white,
-          color: Color(0xff59308E),
-          fillColor: Color(0xff59308E),
+          color: const Color(0xff59308E),
+          fillColor: const Color(0xff59308E),
           borderRadius: BorderRadius.circular(10),
-          children: <Widget>[
-            Padding(padding: EdgeInsets.symmetric(horizontal: 16), child: Text('None')),
-            Padding(padding: EdgeInsets.symmetric(horizontal: 16), child: Text('Location near me ')),
-          ],
           onPressed: (int index) {
             _sortItems(index);
           },
           isSelected: _isSelected,
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: _items.length,
-            itemBuilder: (context, index) => ListTile(
-              title: Text(_items[index]),
+          children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Text('None'), 
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Text(widget.buttonCaption), 
+            ),
+          ],
         ),
       ],
     );

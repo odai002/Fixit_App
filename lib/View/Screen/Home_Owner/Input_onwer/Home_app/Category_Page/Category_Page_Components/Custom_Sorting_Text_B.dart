@@ -40,10 +40,10 @@ class _SortingSegmentedControlState extends State<SortingSegmentedControl> {
       children: <Widget>[
         // Title Text
         Padding(
-          padding: const EdgeInsets.only(right: 20,top: 10),
+          padding: const EdgeInsets.only(right: 12,top: 10),
           child: Text(
             widget.title, // Title passed from parent
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
 
@@ -62,11 +62,11 @@ class _SortingSegmentedControlState extends State<SortingSegmentedControl> {
           isSelected: _isSelected,
           children: <Widget>[
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 12),
               child: Text('None'), 
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Text(widget.buttonCaption), 
             ),
           ],

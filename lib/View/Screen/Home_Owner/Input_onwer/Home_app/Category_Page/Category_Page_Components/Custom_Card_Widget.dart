@@ -1,255 +1,209 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../Widgets/Custom_Button.dart';
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '../../../../../../Widgets/Custom_Star_widget.dart';
-import '../../task_page.dart';
 
 
 class CustomCard extends StatelessWidget {
+  final Image image;
+  final String name;
+  final String email;
+  final String desc;
+  final String number;
+  final String category;
+  final String local;
+  final double radius;
+
+  const CustomCard({
+    Key? key,
+    required this.image,
+    required this.name,
+    required this.email,
+    required this.desc,
+    required this.number,
+    required this.category,
+    required this.local,
+    this.radius = 55,
+
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
-      elevation: 4.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: Container(
-        child: SingleChildScrollView( // Wrap with SingleChildScrollView
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 18,right: 20,bottom: 9),
-                child: Container(
-                  child: StarDisplayWidget(filledStar:Icon(Icons.star, color: Colors.green, size: 11),
-                     unfilledStar: Icon(Icons.star, color: Colors.grey, size: 11),
 
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 6,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Top Row with Profile Picture, Name, Category, and Star Rating
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Material(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
+
+                  elevation: 8,
+                  child: CircleAvatar(
+                    radius: 28,
+                    backgroundImage: image.image,
                   ),
                 ),
-              ),
-              Row(
-                children: [
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left:20,right: 20,bottom: 10 ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 8,
-                                    spreadRadius: 2,
-                                    offset: Offset.fromDirection(90))
-                              ]),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(100.0),
-                            child: Image.asset(
-                              'assets/U.png',
-                              fit: BoxFit.cover,
-                              width: 45,
-                              height: 45,
+                      // Name, Category, and Rating in one row
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              name,
+                              style: GoogleFonts.libreCaslonText(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
+                          SizedBox(width: 8),
+                          const StarDisplayWidget(
+                            filledStar: Icon(Icons.star, color: Colors.yellow, size: 11),
+                            unfilledStar: Icon(Icons.star, color: Colors.grey, size: 11),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+
+                      Text(
+                        category,
+                        style: GoogleFonts.libreCaslonText(
+                          fontSize: 12,
+                          color: Colors.grey[600],
                         ),
                       ),
-                          CustomButton(
-                            fontSize:6.5,
-                            width: 80,
-                            height: 0,
-                            textcolor: 0xffffffff,
-                            text: 'Hire No',
-                            backgroundColor: Color(0xff6A3BA8),
-                            onPressed: () {
-                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>Taskpage()));
-                  },
-
-                          ),
-                      SizedBox(height: 22),
-
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            RichText(
-                              text: TextSpan(
-                                  children: [
-                                    TextSpan(
-
-                                      text:  "Mhamad Alshame",
-                                      style: GoogleFonts.getFont('Libre Caslon Text',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 13,
-                                        color: Color(0xff000000),
-                                      ),
-                                    ),
-
-                                  ]
-                              ),
-                            ),
-                            SizedBox(width: 18),
-                            RichText(
-                              text: TextSpan(
-                                  children: [
-                                    TextSpan(
-
-                                      text:  "Electrician",
-                                      style: GoogleFonts.getFont('Libre Caslon Text',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 8,
-                                        color: Color(0xff7F7F7F),
-                                      ),
-                                    ),
-
-                                  ]
-                              ),
-                            ),
-
-                          ],
-                        ),
-
-                        SizedBox(height: 7),
-
-                        Container(
-
-                          width: 200,
-                          child: RichText(
-                            text: TextSpan(
-                                children: [
-                                  TextSpan(
-
-                                    text:  "im Dedicated, professional and highly experienced electrical engineer who has been in the field for nearly 20 years...... "
-                                        ,
-                                    style: GoogleFonts.getFont('Libre Caslon Text',
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 10,
-                                      color: Color(0xff000000),
-                                    ),
-                                  ),
-
-                                ]
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 9),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.map,
-                              color: Color(0xff9747FF),
-                              size: 11,
-                              semanticLabel: 'Text to announce in accessibility modes',
-                            ),
-                            SizedBox(width: 5),
-                            Container(
-                              width: 80,
-                              child: RichText(
-                                text: TextSpan(
-                                    children: [
-                                      TextSpan(
-
-                                        text:  "Syria / Rif Damashq / 55666 Olive Viaduct"
-                                        ,
-                                        style: GoogleFonts.getFont('Libre Caslon Text',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 7,
-                                          color: Color(0xff7F7F7F),
-                                        ),
-                                      ),
-
-                                    ]
-                                ),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Icon(
-                                  Icons.email_rounded,
-                                  color: Color(0xff9747FF),
-                                  size: 10,
-                                  semanticLabel: 'Text to announce in accessibility modes',
-                                ),
-                                SizedBox(height: 2),
-                                Icon(
-                                  Icons.phone_android_rounded,
-                                  color: Color(0xff9747FF),
-                                  size: 10,
-                                  semanticLabel: 'Text to announce in accessibility modes',
-                                ),
-                              ],
-                            ),
-                            SizedBox(width: 2),
-                            Column(
-                              children: [
-                                Container(
-                                  width: 90,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        children: [
-                                          TextSpan(
-
-                                            text:  "Mhamad233@gmail.com"
-                                            ,
-                                            style: GoogleFonts.getFont('Libre Caslon Text',
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 7,
-                                              color: Color(0xff7F7F7F),
-                                            ),
-                                          ),
-
-                                        ]
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Container(
-                                  width: 90,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        children: [
-                                          TextSpan(
-
-                                            text:  "0945113366"
-                                            ,
-                                            style: GoogleFonts.getFont('Libre Caslon Text',
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 7,
-                                              color: Color(0xff7F7F7F),
-                                            ),
-                                          ),
-
-                                        ]
-                                    ),
-                                  ),
-                                ),
-
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
+                ),
+              ],
+            ),
+            SizedBox(height: 8),
+            // Description and Hire Button Row
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF6A3BA8),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                  ),
+                  child: Text(
+                    'Hire Now',
+                    style: GoogleFonts.libreCaslonText(
+                      color: Colors.white,
+                      fontSize: 8,
                     ),
                   ),
+                ),
+                SizedBox(width: 8),
 
-                ],
-              ),
+                Expanded(
+                  child: Text(
+                    desc,
+                    style: GoogleFonts.libreCaslonText(
+                      fontSize: 12,
+                      color: Colors.grey[800],
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
 
-            ],
-          ),
+              ],
+            ),
+            SizedBox(height: 12),
+            // Bottom Row with Location, Email, and Phone
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Row(
+                    children: [
+                      Icon(Icons.location_on, size: 10, color: Color(0xFF6A3BA8)),
+                      SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          local,
+                          style: GoogleFonts.libreCaslonText(
+                            fontSize: 8,
+                            color: Colors.grey[600],
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Flexible(
+                  child: Row(
+                    children: [
+                      Icon(Icons.email, size: 10, color: Color(0xFF6A3BA8)),
+                      SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          email,
+                          style: GoogleFonts.libreCaslonText(
+                            fontSize: 8,
+                            color: Colors.grey[600],
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Flexible(
+                  child: Row(
+                    children: [
+                      Icon(Icons.phone, size: 10, color: Color(0xFF6A3BA8)),
+                      SizedBox(width: 4),
+                      Text(
+                        number,
+                        style: GoogleFonts.libreCaslonText(
+                          fontSize: 8,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
+
+
+
+

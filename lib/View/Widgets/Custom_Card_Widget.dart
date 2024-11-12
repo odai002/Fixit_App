@@ -4,18 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Screen/Home_Owner/Input_onwer/Home_app/task_page.dart';
-import 'Custom_Button.dart';
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'Custom_Star_widget.dart';
-
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
   final Image image;
@@ -25,164 +18,180 @@ class CustomCard extends StatelessWidget {
   final String number;
   final String category;
   final String local;
+  final double radius;
 
   const CustomCard({
     Key? key,
     required this.image,
+    required this.name,
     required this.email,
     required this.desc,
     required this.number,
-    required this.name,
     required this.category,
     required this.local,
+    this.radius = 55,
+
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 6,
-              spreadRadius: 1,
-            ),
-          ],
-        ),
+    return Card(
+
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 6,
+      child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Top Row with Profile Picture, Name, Category, and Star Rating
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Profile Image
-                Container(
-                  width: 55,
-                  height: 55,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 6,
-                        spreadRadius: 0.2,
-                        offset: Offset(1, 1),
-                      ),
-                    ],
-                  ),
-                  child: ClipOval(
-                    child: image,
+                Material(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
+
+                  elevation: 8,
+                  child: CircleAvatar(
+                    radius: 28,
+                    backgroundImage: image.image,
                   ),
                 ),
-                SizedBox(width: 16),
-                // Name, Category, and Star Ratings
+                SizedBox(width: 14),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Name, Category, and Rating in one row
                       Row(
-                        children: [
-                          Text(
-                            name,
-                            style: GoogleFonts.libreCaslonText(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                              color: Colors.black,
-                            ),
-                          ),
-                          SizedBox(width: 6),
-                          Text(
-                            category,
-                            style: GoogleFonts.libreCaslonText(
-                              fontSize: 8,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          Spacer(),
-                          // Stars in top right corner
-                          Row(
-                            children: List.generate(4, (index) {
-                              return Icon(Icons.star, color: Colors.yellow, size: 8);
-                            })..add(Icon(Icons.star, color: Colors.grey, size: 8)),
-                          ),
-
-                        ],
-                      ),
-                      SizedBox(height: 12),
-
-                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Text(
-                              desc,
+                              name,
                               style: GoogleFonts.libreCaslonText(
-                                fontSize: 11,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
-                              maxLines: 4,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
+                          SizedBox(width: 8),
+                          const StarDisplayWidget(
+                            filledStar: Icon(Icons.star, color: Colors.yellow, size: 11),
+                            unfilledStar: Icon(Icons.star, color: Colors.grey, size: 11),
+                          ),
                         ],
+                      ),
+                      SizedBox(height: 4),
+
+                      Text(
+                        category,
+                        style: GoogleFonts.libreCaslonText(
+                          fontSize: 12,
+                          color: Colors.grey[600],
+                        ),
                       ),
                     ],
                   ),
                 ),
-
               ],
             ),
-            // "Hire Again" Button on the left and Description on the right
+            SizedBox(height: 8),
+            // Description and Hire Button Row
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Taskpage()),
-                    );
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff6A3BA8),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+                    backgroundColor: Color(0xFF6A3BA8),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(8),
                     ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
                   ),
                   child: Text(
-                    'Hire Again',
+                    'Hire Now',
                     style: GoogleFonts.libreCaslonText(
-                      fontSize: 8,
                       color: Colors.white,
+                      fontSize: 8,
                     ),
                   ),
                 ),
                 SizedBox(width: 8),
-                // Description aligned to the right of the button
+
+                Expanded(
+                  child: Text(
+                    desc,
+                    style: GoogleFonts.libreCaslonText(
+                      fontSize: 12,
+                      color: Colors.grey[800],
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
 
               ],
             ),
-            SizedBox(height: 8),
-            // Location, Email, and Phone Row with reduced spacing
+            SizedBox(height: 12),
+            // Bottom Row with Location, Email, and Phone
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconWithText(
-                  icon: Icons.location_on,
-                  text: local,
+                Flexible(
+                  child: Row(
+                    children: [
+                      Icon(Icons.location_on, size: 10, color: Color(0xFF6A3BA8)),
+                      SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          local,
+                          style: GoogleFonts.libreCaslonText(
+                            fontSize: 8,
+                            color: Colors.grey[600],
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                IconWithText(
-                  icon: Icons.email_rounded,
-                  text: email,
+                Flexible(
+                  child: Row(
+                    children: [
+                      Icon(Icons.email, size: 10, color: Color(0xFF6A3BA8)),
+                      SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          email,
+                          style: GoogleFonts.libreCaslonText(
+                            fontSize: 8,
+                            color: Colors.grey[600],
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                IconWithText(
-                  icon: Icons.phone_android_rounded,
-                  text: number,
+                Flexible(
+                  child: Row(
+                    children: [
+                      Icon(Icons.phone, size: 10, color: Color(0xFF6A3BA8)),
+                      SizedBox(width: 4),
+                      Text(
+                        number,
+                        style: GoogleFonts.libreCaslonText(
+                          fontSize: 8,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -193,35 +202,6 @@ class CustomCard extends StatelessWidget {
   }
 }
 
-// IconWithText widget for displaying Icon and Text
-class IconWithText extends StatelessWidget {
-  final IconData icon;
-  final String text;
-
-  IconWithText({required this.icon, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, color: Color(0xff9747FF), size: 12),
-        SizedBox(width: 2), // Reduced spacing
-        Container(
-          width: 70,
-          child: Text(
-            text,
-            style: GoogleFonts.libreCaslonText(
-              fontWeight: FontWeight.w500,
-              fontSize: 10,
-              color: Color(0xff7F7F7F),
-            ),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 
 
