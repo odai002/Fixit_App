@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Screen/Home_Owner/Input_onwer/Home_app/task_page.dart';
 import 'Custom_Star_widget.dart';
 
 class CustomCard extends StatelessWidget {
@@ -105,7 +106,9 @@ class CustomCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>Taskpage()));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF6A3BA8),
                     shape: RoundedRectangleBorder(
