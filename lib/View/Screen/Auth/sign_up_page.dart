@@ -26,7 +26,7 @@ class SignUp extends StatelessWidget {
                   width: double.maxFinite,
                   padding: const EdgeInsets.all(37.2),
                   child: Form(
-                    key: controller.formstate,
+                    key: controller.formstate9,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -94,6 +94,7 @@ class SignUp extends StatelessWidget {
                             controller: controller.username,
                             name: "username...",
                             prefixIcon: Icons.person_rounded,
+                            prefixIconColor:const Color(0xff6A3BA8),
                             inputType: TextInputType.name,
                             textCapitalization: TextCapitalization.words,
                             suffixIcon: null,
@@ -111,6 +112,7 @@ class SignUp extends StatelessWidget {
                             name: "Email...",
                             prefixIcon: Icons.email_rounded,
                             inputType: TextInputType.emailAddress,
+                            prefixIconColor:const Color(0xff6A3BA8),
                             textCapitalization: TextCapitalization.words,
                             suffixIcon: null,
                           ),
@@ -126,6 +128,7 @@ class SignUp extends StatelessWidget {
                             maxLength: 100,
                             controller: controller.phone,
                             name: "phone...",
+                            prefixIconColor:const Color(0xff6A3BA8),
                             prefixIcon: Icons.phone_android_rounded,
                             inputType: TextInputType.phone,
                             textCapitalization: TextCapitalization.words,
@@ -140,23 +143,23 @@ class SignUp extends StatelessWidget {
                             builder: (controller) => Column(
                               children: [
                                 DropdownMenuExample(
-                                  items: const ['Home Owner', 'Contractor'],
+                                  items: controller.users,
                                   onSelected: (String value) {
                                     controller.setUsertype(value);
-                                  },
+                                  }, initialValue: (String value) {
+                                    controller.role;
+                                },
                                 ),
                                 const SizedBox(height: 22),
-                          
+
                                 if (controller.showContractorDropdown)
                                   DropdownMenuExample(
-                                    items: const [
-                                      'Cleaning', 'Handyman', 'Movers', 'Landscaping', 'HVAC',
-                                      'Plumbing', 'Snow Removal', 'Electrician', 'Roof Repair',
-                                      'Carpet Cleaning', 'Flooring', 'Carpenter'
-                                    ],
-                                    onSelected: (String value) {
-                                    },
-                                  ),
+                        items: controller.services.map((service) => service['name'] as String).toList(),
+                         onSelected: (String selectedServiceName) {
+                          controller.setService(selectedServiceName);
+                          },
+                           initialValue: (String){controller.selectedService;},
+                ),
                               ],
                             ),
                           ),
@@ -167,16 +170,21 @@ class SignUp extends StatelessWidget {
                           builder: (controller) => Row(
                             children: [
                               DropdownMenuExample(
-                                items: const ['Syria', 'Jordan', 'Qatar'],
+                                items:controller.Countries,
                                 onSelected: (String value) {
                                   controller.setCountry(value);
-                                },
+                                },initialValue:(String value){
+                                  controller.country;
+                              },
                               ),
                               const SizedBox(width: 22),
                               DropdownMenuExample(
-                                items: const ['Damascus', 'Aleppo', 'Homs', 'Amman', 'Doha'],
+                                items: controller.Cities,
                                 onSelected: (String value) {
                                   controller.setCity(value);
+                                },
+                                initialValue:(String){
+                                  controller.city;
                                 },
                               ),
                             ],
@@ -189,10 +197,10 @@ class SignUp extends StatelessWidget {
                           child: CustomTextField(
                             validator: (val) {
                               return validinput(val!, 5, 100, "street");
-
                             },
                             maxLength: 100,
-                            controller: controller.streetAddress,
+                            controller: controller.address,
+                            prefixIconColor:const Color(0xff6A3BA8),
                             name: "type your street address...",
                             prefixIcon: Icons.streetview_rounded,
                             inputType: TextInputType.name,
@@ -212,7 +220,8 @@ class SignUp extends StatelessWidget {
                               controller: controller.password,
                               name: "password...",
                               prefixIcon: Icons.lock,
-                              inputType: TextInputType.name,
+                            prefixIconColor:const Color(0xff6A3BA8),
+                            inputType: TextInputType.name,
                               textCapitalization: TextCapitalization.words,
                               suffixIcon: Icons.remove_red_eye,
                               onTapIcon:(){
@@ -235,7 +244,8 @@ class SignUp extends StatelessWidget {
                                 },
                               maxLength: 100,
                               obscureText: controller.isConfirmshowpassword,
-                              controller: controller.confirmPassword,
+                              prefixIconColor:const Color(0xff6A3BA8),
+                              controller: controller.password_confirmation,
                               name: "confirm password...",
                               prefixIcon: Icons.lock,
                               inputType: TextInputType.name,
@@ -254,16 +264,18 @@ class SignUp extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                CustomButton(
-                                  fontSize: 12,
-                                  height: 50,
-                                  textcolor: 0xffFFFFFF,
-                                  text: 'Register',
-                                  backgroundColor: const Color(0xff6A3BA8),
-                                  width: 120,
-                                  onPressed: () {
-                                    controller.Register();
-                                  }
+                                GetBuilder<SignupControllerImp>(builder:(controller)=>
+                                   CustomButton(
+                                    fontSize: 12,
+                                    height: 50,
+                                    textcolor: 0xffFFFFFF,
+                                    text: 'Register',
+                                    backgroundColor: const Color(0xff6A3BA8),
+                                    width: 120,
+                                    onPressed: () async{
+                                     await controller.Register();
+                                    }
+                                  ),
                                 ),
                                 const SizedBox(width: 22),
                                 CustomButton(

@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../Controller/Auth/veryfiey_signup_controller.dart';
-
-
 class VerifyCodeSignUp extends StatelessWidget {
+  const VerifyCodeSignUp({super.key});
+
 
   @override
   Widget build(BuildContext context) {
+/*
     VeryfiycodeSignupControllerImp controller =Get.put(VeryfiycodeSignupControllerImp());
+*/
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -102,7 +102,9 @@ class VerifyCodeSignUp extends StatelessWidget {
                   },
                   //runs when every textfield is filled
                   onSubmit: (String verificationCode){
+/*
                     controller.ToPageSucsessSignUp();
+*/
 
                   }, // end onSubmit
                 ),

@@ -1,28 +1,24 @@
+import 'package:fixit/Controller/Contractor/contract_controller.dart';
+import 'package:fixit/Controller/Contractor/homepage_contractor_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../Widgets/Custom_Button.dart';
-import '../../../Widgets/Custome_image_Button_H.dart';
 import '../../../Widgets/custom_textfield_verify.dart';
 
 
 
-class ContractPage extends StatefulWidget {
+class ContractPage extends StatelessWidget {
+  const ContractPage({super.key});
 
-  @override
-  _ContractPageState createState() => _ContractPageState();
-}
-
-class _ContractPageState extends State<ContractPage> {
-
-
-  final dateController = TextEditingController();
-  final priceController = TextEditingController();
-  final DateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final argumennts=Get.arguments;
+    ContractController controller= Get.put(ContractController());
+    ContractorHomeController controller1 = Get.put(ContractorHomeController());
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -38,7 +34,7 @@ class _ContractPageState extends State<ContractPage> {
                     style: GoogleFonts.getFont('Libre Caslon Text',
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
-                      color: Color(0xff000000),
+                      color: const Color(0xff000000),
                     ),
                   ),
                 ]
@@ -48,7 +44,7 @@ class _ContractPageState extends State<ContractPage> {
         leading: BackButton(
           color: Colors.black, // Customizing the color of the back button
           onPressed: () {
-            Navigator.pop(context);
+           Get.back();
           },
           // You can also customize the icon by providing a different icon widget
           // icon: Icon(Icons.arrow_back),
@@ -66,7 +62,7 @@ class _ContractPageState extends State<ContractPage> {
             padding: EdgeInsets.all(32.2),
             child: Column  (
               children: [
-                SizedBox(height: 13),
+                const SizedBox(height: 13),
                 Padding(padding: EdgeInsets.symmetric(horizontal:  1
                 ),
                   child: Row(
@@ -94,11 +90,11 @@ class _ContractPageState extends State<ContractPage> {
                             children: [
                               TextSpan(
 
-                                text:  "Repair",
+                                text:  controller.taskTitle,
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ]
@@ -112,8 +108,8 @@ class _ContractPageState extends State<ContractPage> {
 
                 ),
 
-                SizedBox(height: 23),
-                Padding(padding: EdgeInsets.symmetric(horizontal:  1
+                const SizedBox(height: 23),
+                Padding(padding: const EdgeInsets.symmetric(horizontal:  1
                 ),
                   child: Row(
                     children: [
@@ -126,7 +122,7 @@ class _ContractPageState extends State<ContractPage> {
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ]
@@ -140,7 +136,7 @@ class _ContractPageState extends State<ContractPage> {
                         maxLine: 1,
                         HintText: 'type date....',
                         maxLength: 100,
-                        controller: dateController,
+                        controller: controller.dateController,
                         prefixIcon: null,
                         inputType: TextInputType.name,
                         textCapitalization: TextCapitalization.words, width: 160, align: TextAlign.left, height: 50,
@@ -150,9 +146,9 @@ class _ContractPageState extends State<ContractPage> {
 
                 ),
 
-                SizedBox(height: 33),
+                const SizedBox(height: 33),
 
-                Padding(padding: EdgeInsets.symmetric(horizontal:  1
+                Padding(padding: const EdgeInsets.symmetric(horizontal:  1
                 ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -201,7 +197,7 @@ class _ContractPageState extends State<ContractPage> {
                                 children: [
                                   TextSpan(
 
-                                    text:  "Repairing the shelf and lights. ",
+                                    text:  controller.taskDescription,
                                     style: GoogleFonts.getFont('Libre Caslon Text',
                                       fontWeight: FontWeight.w500,
                                       fontSize: 12,
@@ -252,26 +248,27 @@ class _ContractPageState extends State<ContractPage> {
                     child: Row(
                       children: [
 
-                        SizedBox(width: 3.6),
-
-                        ImageTextButtonH(onPressed: () {  },  image: const AssetImage('images/download.jpg'), text: '',),
-                        SizedBox(width: 12),
-
-                        ImageTextButtonH(onPressed: () {  },  image: const AssetImage('images/download.jpg'), text: '',),
-                        SizedBox(width: 12),
-
-                        ImageTextButtonH(onPressed: () {  },  image: const AssetImage('images/download.jpg'), text: '',),
-                        SizedBox(width: 12),
-
-                        ImageTextButtonH(onPressed: () {  },  image: const AssetImage('images/download.jpg'), text: '',),
-                        SizedBox(width: 12),
+                        Wrap(
+                          children: controller.taskImages?.map((imageUrl) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.network(
+                                imageUrl,
+                                width: 80,
+                                height: 80,
+                                fit: BoxFit.cover,
+                              ),
+                            );
+                          }).toList() ?? [],
+                        ),
+                        const SizedBox(width: 12),
 
 
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 33),
+                const SizedBox(height: 33),
                 Padding(padding: EdgeInsets.symmetric(horizontal:  1
                 ),
                   child: Row(
@@ -285,7 +282,7 @@ class _ContractPageState extends State<ContractPage> {
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ]
@@ -294,13 +291,13 @@ class _ContractPageState extends State<ContractPage> {
 
                       ),
 
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
 
                       CustomTextFieldVerify(
                         maxLine: 1,
                         HintText: 'type price....',
                         maxLength: 100,
-                        controller: priceController,
+                        controller: controller.priceController,
                         prefixIcon: null,
                         inputType: TextInputType.number,
                         textCapitalization: TextCapitalization.words, width: 210, align: TextAlign.left, height: 50,
@@ -309,7 +306,7 @@ class _ContractPageState extends State<ContractPage> {
                   ),
 
                 ),
-                SizedBox(height: 33),
+                const SizedBox(height: 33),
                 Padding(padding: EdgeInsets.symmetric(horizontal:  1
                 ),
                   child: Row(
@@ -323,7 +320,7 @@ class _ContractPageState extends State<ContractPage> {
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ]
@@ -332,13 +329,13 @@ class _ContractPageState extends State<ContractPage> {
 
                       ),
 
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
 
                       CustomTextFieldVerify(
                         maxLine: 1,
                         HintText: 'type date...',
                         maxLength: 100,
-                        controller: DateController,
+                        controller: controller.deadlineController,
                         prefixIcon: null,
                         inputType: TextInputType.datetime,
                         textCapitalization: TextCapitalization.words, width: 180, align: TextAlign.left, height: 50,
@@ -347,7 +344,7 @@ class _ContractPageState extends State<ContractPage> {
                   ),
 
                 ),
-                SizedBox(height: 33),
+                const SizedBox(height: 33),
                 Align(
                   alignment: Alignment.topLeft,
                   child: RichText(
@@ -359,7 +356,7 @@ class _ContractPageState extends State<ContractPage> {
                             style: GoogleFonts.getFont('Libre Caslon Text',
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
-                              color: Color(0xff000000),
+                              color: const Color(0xff000000),
                             ),
                           ),
                         ]
@@ -369,7 +366,7 @@ class _ContractPageState extends State<ContractPage> {
                   ),
                 ),
 
-                SizedBox(height: 22),
+                const SizedBox(height: 22),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
 
@@ -398,11 +395,11 @@ class _ContractPageState extends State<ContractPage> {
                                 children: [
                                   TextSpan(
 
-                                    text:  "Syria",
+                                    text:  controller.taskCountry,
                                     style: GoogleFonts.getFont('Libre Caslon Text',
                                       fontWeight: FontWeight.w500,
                                       fontSize: 12,
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                     ),
                                   ),
                                 ]
@@ -438,11 +435,11 @@ class _ContractPageState extends State<ContractPage> {
                                   children: [
                                     TextSpan(
 
-                                      text:  "Damascus",
+                                      text:  controller.taskCity,
                                       style: GoogleFonts.getFont('Libre Caslon Text',
                                         fontWeight: FontWeight.w500,
                                         fontSize: 12,
-                                        color: Color(0xff000000),
+                                        color: const Color(0xff000000),
                                       ),
                                     ),
                                   ]
@@ -456,7 +453,7 @@ class _ContractPageState extends State<ContractPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 33),
+                const SizedBox(height: 33),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Container(
@@ -482,11 +479,11 @@ class _ContractPageState extends State<ContractPage> {
                             children: [
                               TextSpan(
 
-                                text:  "Street oliver/building52",
+                                text:  controller.taskLocation,
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ]
@@ -498,32 +495,27 @@ class _ContractPageState extends State<ContractPage> {
                   ),
                 ),
 
-
-                SizedBox(height: 50),
-                Padding(padding: EdgeInsets.symmetric(horizontal:  1
+                const SizedBox(height: 50),
+                Padding(padding: const EdgeInsets.symmetric(horizontal:  1
                 ),
                   child:   CustomButton(
                     width: 250,
                     textcolor: 0xffffffff,
                     text: 'Send Contract',
-                    backgroundColor: Color(0xff6A3BA8),
+                    backgroundColor: const Color(0xff6A3BA8),
                     onPressed: () {
+                      controller.sendContract(1);
+                      controller1.updateClick("Waiting");
                       }, height: 50, fontSize: 12,
                   ),
                 ),
-
-
               ],
-
             ),
           ),
 
         ),
       ),
     );
-
-
   }
-
 }
 

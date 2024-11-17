@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Core/constant/route.dart';
+import '../../../Core/constant/route.dart';
 
 abstract class ForgerpasswordController extends GetxController{
   CheckEmail();
   ToPageVeryfiyCode();
 }
 class ForgetpasswordControllerImp extends ForgerpasswordController{
-  GlobalKey<FormState> formstate= GlobalKey<FormState>();
+  GlobalKey<FormState> formstate_1= GlobalKey<FormState>();
   late TextEditingController email;
   @override
   CheckEmail() {
@@ -17,7 +17,7 @@ class ForgetpasswordControllerImp extends ForgerpasswordController{
 
   @override
   ToPageVeryfiyCode() {
-    var formdata = formstate.currentState;
+    var formdata = formstate_1.currentState;
     if(formdata!.validate()){
       Get.offNamed(AppRoute.VeryfiyCode);
     }else{

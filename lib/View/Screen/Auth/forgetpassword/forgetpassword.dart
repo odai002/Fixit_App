@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../Controller/Auth/forgerpassword_controller.dart';
+import '../../../../Controller/Auth/Forget/forgerpassword_controller.dart';
 import '../../../../Core/function/validate_input.dart';
 import '../../../Widgets/Custom_Button.dart';
 import '../../../Widgets/custom_textfield.dart';
@@ -24,7 +24,7 @@ class ForgetPassword extends StatelessWidget {
           child:   Padding(
             padding: const EdgeInsets.all(37.2),
             child: Form(
-              key: controller.formstate,
+              key: controller.formstate_1,
               child: Column  (
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -95,6 +95,7 @@ class ForgetPassword extends StatelessWidget {
                       name: "Email...",
                       prefixIcon: Icons.email_rounded,
                       inputType: TextInputType.name,
+                      prefixIconColor:const Color(0xff6A3BA8),
                       textCapitalization: TextCapitalization.words, suffixIcon: null,
                     ),
 

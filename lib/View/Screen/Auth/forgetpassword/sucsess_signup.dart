@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../Controller/Auth/sucsess_resettpassword_controller.dart';
+import '../../../../Controller/Auth/Forget/sucsess_resettpassword_controller.dart';
 import '../../../Widgets/Custom_Button.dart';
 
 

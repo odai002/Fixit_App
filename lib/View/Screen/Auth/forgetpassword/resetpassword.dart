@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../Controller/Auth/resetpassword_controller.dart';
+import '../../../../Controller/Auth/Forget/resetpassword_controller.dart';
 import '../../../../Core/function/validate_input.dart';
 import '../../../Widgets/Custom_Button.dart';
 import '../../../Widgets/custom_textfield.dart';
@@ -25,7 +25,7 @@ class Resetpassword extends StatelessWidget {
           child:   Padding(
             padding: const EdgeInsets.all(37.2),
             child: Form(
-              key:controller.formstate,
+              key:controller.formstate_key,
               child: Column  (
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -97,7 +97,8 @@ class Resetpassword extends StatelessWidget {
                         controller: controller.password,
                         name: "new password...",
                         prefixIcon: Icons.lock,
-                        inputType: TextInputType.name,
+                      prefixIconColor:const Color(0xff6A3BA8),
+                      inputType: TextInputType.name,
                         obscureText:controller.isshowpassword,
                         onTapIcon:(){
                           controller.ShowPassword();
@@ -123,7 +124,8 @@ class Resetpassword extends StatelessWidget {
                         prefixIcon: Icons.lock,
                         inputType: TextInputType.name,
                         textCapitalization: TextCapitalization.words,
-                          suffixIcon: Icons.remove_red_eye,
+                      prefixIconColor:const Color(0xff6A3BA8),
+                      suffixIcon: Icons.remove_red_eye,
                         obscureText:controller.isConfirmshowpassword,
                         onTapIcon:(){
                             controller.ShowConfirmPassword();

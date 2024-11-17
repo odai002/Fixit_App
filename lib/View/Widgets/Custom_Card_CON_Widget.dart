@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
-import '../Screen/Contractor/Input_contractor/contract_page.dart';
-import '../Screen/Home_Owner/Input_onwer/Home_app/task_page.dart';
+import '../../Controller/Contractor/homepage_contractor_controller.dart';
+import '../../Core/constant/route.dart';
 import 'Custom_Button.dart';
 
 class CustomCardCON extends StatelessWidget {
@@ -14,9 +13,10 @@ class CustomCardCON extends StatelessWidget {
   final String number;
   final String category;
   final String local;
+  final Function() onViewTask;
 
-  const CustomCardCON({
-    Key? key,
+   CustomCardCON({
+    super.key,
     required this.image,
     required this.email,
     required this.desc,
@@ -24,11 +24,13 @@ class CustomCardCON extends StatelessWidget {
     required this.name,
     required this.category,
     required this.local,
+    required this.onViewTask
 
 
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
+    ContractorHomeController controller=Get.find();
     return Card(
       color: Colors.white,
       elevation: 4.0,
@@ -50,13 +52,11 @@ class CustomCardCON extends StatelessWidget {
                  child: IconButton(
                           onPressed: () async {
                           },
-                     padding: EdgeInsets.all(0.0),
-                          icon: Icon(
+                     padding: const EdgeInsets.all(0.0),
+                          icon: const Icon(
                               color: Color(0xff9747FF),
-
                               size: 18,
                               Icons.delete)
-
                       ),
                ),
              ),
@@ -89,19 +89,20 @@ class CustomCardCON extends StatelessWidget {
                             ),
                           ),
                         ),
-                            CustomButton(
-                              fontSize:6.5,
-                    width: 80,
-                    height: 10,
-                    textcolor: 0xffffffff,
-                    backgroundColor: Color(0xff6A3BA8),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ContractPage()));                  }, text: '',
+                            Obx(()=> CustomButton(
+                                fontSize:6.5,
+                                                  width: 80,
+                                                  height: 10,
+                                                  textcolor: 0xffffffff,
+                                                  backgroundColor: const Color(0xff6A3BA8),
+                                                  onPressed: () {
+                                  Get.toNamed(AppRoute.ContractPage);
 
+                                                  }, text:controller.contractStatus.value,
+
+                              ),
                             ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
 
                       ],
                     ),
@@ -123,19 +124,19 @@ class CustomCardCON extends StatelessWidget {
                                         style: GoogleFonts.getFont('Libre Caslon Text',
                                           fontWeight: FontWeight.w500,
                                           fontSize: 13,
-                                          color: Color(0xff000000),
+                                          color: const Color(0xff000000),
                                         ),
                                       ),
 
                                     ]
                                 ),
                               ),
-                              SizedBox(width: 18),
+                              const SizedBox(width: 18),
 
                             ],
                           ),
 
-                          SizedBox(height: 7),
+                          const SizedBox(height: 7),
 
                           Row(
                             children: [
@@ -153,19 +154,21 @@ class CustomCardCON extends StatelessWidget {
                                             style: GoogleFonts.getFont('Libre Caslon Text',
                                               fontWeight: FontWeight.w500,
                                               fontSize: 10,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
+
                                           TextSpan(
-                                            onEnter:(event) => Navigator.of(context).pop(MaterialPageRoute(builder: (context)=>Taskpage())),
+                                            onEnter:onViewTask(),
                                             text:  ": View Task"
                                             ,
                                             style: GoogleFonts.getFont('Libre Caslon Text',
                                               fontWeight: FontWeight.w500,
                                               fontSize: 11,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
+
                                         ]
                                     ),
                                   ),
@@ -174,17 +177,17 @@ class CustomCardCON extends StatelessWidget {
 
                             ],
                           ),
-                          SizedBox(height: 9),
+                          const SizedBox(height: 9),
                           Row(
                             children: [
 
-                              Icon(
+                              const Icon(
                                 Icons.map,
                                 color: Color(0xff9747FF),
                                 size: 11,
                                 semanticLabel: 'Text to announce in accessibility modes',
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Container(
                                 width: 80,
                                 child: RichText(
@@ -197,7 +200,7 @@ class CustomCardCON extends StatelessWidget {
                                           style: GoogleFonts.getFont('Libre Caslon Text',
                                             fontWeight: FontWeight.w500,
                                             fontSize: 7,
-                                            color: Color(0xff7F7F7F),
+                                            color: const Color(0xff7F7F7F),
                                           ),
                                         ),
 
@@ -205,7 +208,7 @@ class CustomCardCON extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Column(
+                              const Column(
                                 children: [
                                   Icon(
                                     Icons.email_rounded,
@@ -222,7 +225,7 @@ class CustomCardCON extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(width: 2),
+                              const SizedBox(width: 2),
                               Column(
                                 children: [
                                   Container(
@@ -237,7 +240,7 @@ class CustomCardCON extends StatelessWidget {
                                               style: GoogleFonts.getFont('Libre Caslon Text',
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 7,
-                                                color: Color(0xff7F7F7F),
+                                                color: const Color(0xff7F7F7F),
                                               ),
                                             ),
 
@@ -245,20 +248,19 @@ class CustomCardCON extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 5),
-                                  Container(
+                                  const SizedBox(height: 5),
+                                  SizedBox(
                                     width: 90,
                                     child: RichText(
                                       text: TextSpan(
                                           children: [
                                             TextSpan(
-
                                               text:  number
                                               ,
                                               style: GoogleFonts.getFont('Libre Caslon Text',
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 7,
-                                                color: Color(0xff7F7F7F),
+                                                color: const Color(0xff7F7F7F),
                                               ),
                                             ),
 

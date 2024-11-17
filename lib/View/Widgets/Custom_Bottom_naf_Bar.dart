@@ -1,7 +1,8 @@
 
+import 'package:fixit/Core/constant/route.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../Screen/Home_Owner/Input_onwer/Home_app/Home_page.dart';
 
 
 // ignore: must_be_immutable
@@ -37,9 +38,7 @@ class SnackBarBody extends StatelessWidget {
           enableFeedback: false,
           onPressed: () {
             pageIndex = 0;
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomePage()));
+            Get.toNamed(AppRoute.HomePage);
           },
           icon: pageIndex == 0
               ? const Icon(
@@ -72,7 +71,8 @@ class SnackBarBody extends StatelessWidget {
         ),
         IconButton(
           enableFeedback: false,
-          onPressed: () {
+          onPressed: (){
+            pageIndex==2;
           },
           icon: pageIndex == 2
               ? const Icon(
@@ -89,6 +89,7 @@ class SnackBarBody extends StatelessWidget {
         IconButton(
           enableFeedback: false,
           onPressed: () {
+            Get.toNamed(AppRoute.Notification);
           },
           icon: pageIndex == 3
               ? const Icon(

@@ -3,7 +3,7 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../Controller/Auth/veryfiy_controller.dart';
+import '../../../../Controller/Auth/Forget/veryfiy_controller.dart';
 
 
 class VerifyCode extends StatelessWidget {

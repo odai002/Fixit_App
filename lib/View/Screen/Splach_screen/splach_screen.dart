@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fixit/data/data_source/Remote/auth/signin_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -14,17 +15,33 @@ class SplachScreen extends StatefulWidget {
 }
 
 class _SplachScreenState extends State<SplachScreen> {
+  SigninService signinService =SigninService();
   @override
   void initState(){
     super.initState();
-    Timer(Duration(seconds: 5),(){
+    Timer(const Duration(seconds: 3),checkloginstate);
+  }
+
+  Future<void> checkloginstate()async{
+    String? token = await signinService.getToken();
+    String? role = await signinService.getUserType();
+
+    if (token != null) {
+      if (role == "homeowner") {
+        Get.offNamed(AppRoute.HomePage);
+      } else if (role == "contractor") {
+        Get.offNamed(AppRoute.ContractorHomePage);
+      } else {
+        Get.offNamed(AppRoute.SignIn);
+      }
+    } else {
       Get.offNamed(AppRoute.SignIn);
-    });
+    }
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color(0xff6A3BA8),
+      backgroundColor:const Color(0xff6A3BA8),
       body:Center(
         child: Lottie.asset('assets/logo.json'),
       ),

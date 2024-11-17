@@ -13,5 +13,21 @@ class AppRoute{
   static const String  SucsessSignUp= "/sucsesssignup";
 
 
+  //Home Onwer
+  static const String  HomePage= "/homepage";
+  static const String CategoryPage = "/categorypage";
+  static const String TaskPage = "/taskpage";
+
+
+
+  //Contractor
+  static const String  ContractorHomePage= "/contractorhomepage";
+  static const String  ContractPage= "/contractpage";
+  static const String  TaskDetailsPage= "/taskdetailspage";
+
+  //Main Pages
+  static const String  EditAccountPage= "/editaccountpage";
+  static const String Notification = "/notification";
+
 
 }

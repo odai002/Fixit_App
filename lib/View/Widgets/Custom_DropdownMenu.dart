@@ -8,7 +8,7 @@ class DropdownMenuExample extends StatefulWidget {
   const DropdownMenuExample({
     Key? key,
     required this.items,
-    this.onSelected,
+    this.onSelected, required void Function(String value) initialValue,
   }) : super(key: key);
 
   @override

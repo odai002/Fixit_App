@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class SnackBarBodyCON extends StatelessWidget {
+
   int pageIndex = 1;
 
   @override
@@ -11,8 +12,7 @@ class SnackBarBodyCON extends StatelessWidget {
 
       height: 46,
       decoration: BoxDecoration(
-
-        color: Color(0xff6A3BA8),
+        color: const Color(0xff6A3BA8),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(22),
           topRight: Radius.circular(22),

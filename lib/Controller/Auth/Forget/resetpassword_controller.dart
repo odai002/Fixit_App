@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Core/constant/route.dart';
+import '../../../Core/constant/route.dart';
 
 abstract class ResetpasswordController extends GetxController{
   save();
   ToPageSucsessResset();
 }
 class ResetpasswordControllerImp extends ResetpasswordController{
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  GlobalKey<FormState> formstate_key = GlobalKey<FormState>();
   late TextEditingController password;
   late TextEditingController Confirmpassword;
 
@@ -28,7 +28,7 @@ class ResetpasswordControllerImp extends ResetpasswordController{
 
   @override
   ToPageSucsessResset() {
-    var formdata = formstate.currentState;
+    var formdata = formstate_key.currentState;
     if(formdata!.validate()){
       Get.offNamed(AppRoute.SucsessResetPassword);
     }else{

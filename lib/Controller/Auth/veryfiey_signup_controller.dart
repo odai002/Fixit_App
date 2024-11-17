@@ -1,3 +1,4 @@
+/*
 import 'package:get/get.dart';
 
 import '../../Core/constant/route.dart';
@@ -23,4 +24,4 @@ class VeryfiycodeSignupControllerImp extends VeryfiycodeSignupController{
     super.onInit();
   }
 
-}
+}*/

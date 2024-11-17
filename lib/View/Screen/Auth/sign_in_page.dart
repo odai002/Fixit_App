@@ -17,7 +17,7 @@ class SignIn extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
-      body: Center(
+      body:Center(
         child:SingleChildScrollView(
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -27,7 +27,7 @@ class SignIn extends StatelessWidget {
             width:  double.maxFinite,
             padding: const EdgeInsets.all(37.2),
             child: Form(
-              key:controller.formstate,
+              key:controller.formstate8,
               child: Column  (
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -100,6 +100,7 @@ class SignIn extends StatelessWidget {
                       controller: controller.email,
                       name: "Email...",
                       prefixIcon: Icons.email_rounded,
+                      prefixIconColor:const Color(0xff6A3BA8),
                       inputType: TextInputType.emailAddress,
                       textCapitalization: TextCapitalization.words,
                       suffixIcon: null,
@@ -120,6 +121,7 @@ class SignIn extends StatelessWidget {
                         controller:controller.password ,
                         name: "password...",
                         prefixIcon: Icons.lock,
+                        prefixIconColor:const Color(0xff6A3BA8),
                         inputType: TextInputType.visiblePassword,
                         textCapitalization: TextCapitalization.words,
                         suffixIcon: Icons.remove_red_eye,
@@ -175,18 +177,20 @@ class SignIn extends StatelessWidget {
                   ),
                   ),
                   const SizedBox(height: 24),
-                  Padding(padding: const EdgeInsets.symmetric(horizontal:  1
-                  ),
-                    child:   CustomButton(
-                    height: 50, fontSize: 12,
-                      width: 250,
-                      textcolor: 0xffffffff,
-                      text: 'Sign in',
-                      backgroundColor: const Color(0xff6A3BA8),
-                      onPressed:() {
-                      controller.Signin();
-                     }
-                    ),
+                  GetBuilder<SigninControllerImp>(builder:(controller) =>
+                      Padding(padding: const EdgeInsets.symmetric(horizontal:  1
+                      ),
+                        child:   CustomButton(
+                            height: 50, fontSize: 12,
+                            width: 250,
+                            textcolor: 0xffffffff,
+                            text: 'Sign in',
+                            backgroundColor: const Color(0xff6A3BA8),
+                            onPressed:() {
+                              controller.Signin();
+                            }
+                        ),
+                      ),
                   ),
                   const SizedBox(height: 24),
                   Padding(padding: const EdgeInsets.symmetric(horizontal:  1
@@ -246,18 +250,15 @@ class SignIn extends StatelessWidget {
                             ),
                           ),
                         ),
-
                       ],
                     ),
                   ),
                 ],
-
               ),
             ),
           ),
-
         ),
-      ),
+      )
     );
 
   }

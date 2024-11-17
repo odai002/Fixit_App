@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../Core/constant/route.dart';
+import '../../../Core/constant/route.dart';
 
 abstract class SucsessResettpasswordController extends GetxController{
   ToPageSignin();
