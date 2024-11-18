@@ -11,6 +11,7 @@ class Notification extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: Colors.white,
         bottomNavigationBar: SnackBarBody(),
         resizeToAvoidBottomInset: true,
       body:Padding(

@@ -28,8 +28,8 @@ class NotificationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.shade300,
-            blurRadius: 5,
+            color: Colors.grey.shade400,
+            blurRadius: 7,
             spreadRadius: 1,
             offset: const Offset(0, 4),
           ),
@@ -41,28 +41,33 @@ class NotificationCard extends StatelessWidget {
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left:20,right: 20,bottom: 10 ),
+                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 8,
-                            spreadRadius: 2,
-                            offset: Offset.fromDirection(90))
-                      ]),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100.0),
+                    shape: BoxShape.circle, // Circular shape for the container
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.15), // Subtle shadow color
+                        blurRadius: 0.5, // Minimal blur, keeps the shadow sharp
+                        spreadRadius: 0.2, // Slight spread to hug the edge of the image
+                        offset: Offset(0, 0), // No offset to keep the shadow centered
+                      ),
+                    ],
+                  ),
+                  child: ClipOval(
                     child: Image.asset(
                       'assets/U.png',
                       fit: BoxFit.cover,
-                      width: 40,
-                      height: 45,
+                      width: 50, // Circular size
+                      height: 50,
                     ),
                   ),
                 ),
               ),
+
+
+
+
               SizedBox(width: screenWidth * 0.04),
               Expanded(
                 child: Text(
@@ -95,28 +100,31 @@ class NotificationCard extends StatelessWidget {
           if (buttons != null) ...[
             SizedBox(height: screenHeight * 0.015),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: buttons!.map((buttonText) {
                 return Flexible(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: buttonText == 'Accept' ? Colors.purple : Colors.white,
-                      side: const BorderSide(color: Colors.purple),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0), // Adjust spacing here
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: buttonText == 'Accept' ? Color(0xff6A3BA8) : Colors.white,
+                        side: const BorderSide(color: Color(0xff6A3BA8)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: screenHeight * 0.01,
+                          horizontal: screenWidth * 0.02,
+                        ),
                       ),
-                      padding: EdgeInsets.symmetric(
-                        vertical: screenHeight * 0.01,
-                        horizontal: screenWidth * 0.02,
-                      ),
-                    ),
-                    child: FittedBox(
-                      child: Text(
-                        buttonText,
-                        style: TextStyle(
-                          color: buttonText == 'Accept' ? Colors.white : Colors.purple,
-                          fontSize: screenWidth * 0.04,
+                      child: FittedBox(
+                        child: Text(
+                          buttonText,
+                          style: TextStyle(
+                            color: buttonText == 'Accept' ? Colors.white : Color(0xff6A3BA8),
+                            fontSize: screenWidth * 0.04,
+                          ),
                         ),
                       ),
                     ),
