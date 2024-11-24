@@ -1,6 +1,4 @@
 import 'package:fixit/Controller/Contractor/contract_controller.dart';
-import 'package:fixit/Controller/Contractor/homepage_contractor_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,9 +14,8 @@ class ContractPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final argumennts=Get.arguments;
+
     ContractController controller= Get.put(ContractController());
-    ContractorHomeController controller1 = Get.put(ContractorHomeController());
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -59,11 +56,11 @@ class ContractPage extends StatelessWidget {
           ),
           child:   Container(
             width:  double.maxFinite,
-            padding: EdgeInsets.all(32.2),
+            padding: const EdgeInsets.all(32.2),
             child: Column  (
               children: [
                 const SizedBox(height: 13),
-                Padding(padding: EdgeInsets.symmetric(horizontal:  1
+                Padding(padding: const EdgeInsets.symmetric(horizontal:  1
                 ),
                   child: Row(
                     children: [
@@ -76,7 +73,7 @@ class ContractPage extends StatelessWidget {
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
-                                  color: Color(0xff000000),
+                                  color: const Color(0xff000000),
                                 ),
                               ),
                             ]
@@ -84,13 +81,13 @@ class ContractPage extends StatelessWidget {
                         ),
 
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       RichText(
                         text: TextSpan(
                             children: [
                               TextSpan(
 
-                                text:  controller.taskTitle,
+                                text:  controller.taskData['title'],
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
@@ -130,7 +127,7 @@ class ContractPage extends StatelessWidget {
                         ),
 
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
 
                       CustomTextFieldVerify(
                         maxLine: 1,
@@ -164,7 +161,7 @@ class ContractPage extends StatelessWidget {
                                   style: GoogleFonts.getFont('Libre Caslon Text',
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12,
-                                    color: Color(0xff000000),
+                                    color: const Color(0xff000000),
                                   ),
                                 ),
                               ]
@@ -173,7 +170,7 @@ class ContractPage extends StatelessWidget {
 
                         ),
                       ),
-                      SizedBox(height: 22),
+                      const SizedBox(height: 22),
 
                       Container(
                         height: 220,
@@ -197,11 +194,11 @@ class ContractPage extends StatelessWidget {
                                 children: [
                                   TextSpan(
 
-                                    text:  controller.taskDescription,
+                                    text:  controller.taskData['description'],
                                     style: GoogleFonts.getFont('Libre Caslon Text',
                                       fontWeight: FontWeight.w500,
                                       fontSize: 12,
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                     ),
                                   ),
                                 ]
@@ -215,7 +212,7 @@ class ContractPage extends StatelessWidget {
                   ),
 
                 ),
-                SizedBox(height: 33),
+                const SizedBox(height: 33),
 
                 Align(
                   alignment: Alignment.topLeft,
@@ -228,7 +225,7 @@ class ContractPage extends StatelessWidget {
                             style: GoogleFonts.getFont('Libre Caslon Text',
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
-                              color: Color(0xff000000),
+                              color: const Color(0xff000000),
                             ),
                           ),
                         ]
@@ -238,7 +235,7 @@ class ContractPage extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
 
                 SingleChildScrollView (
                   scrollDirection: Axis.horizontal,
@@ -249,7 +246,7 @@ class ContractPage extends StatelessWidget {
                       children: [
 
                         Wrap(
-                          children: controller.taskImages?.map((imageUrl) {
+                          children: controller.taskData['task_image']?.map((imageUrl) {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image.network(
@@ -269,7 +266,7 @@ class ContractPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 33),
-                Padding(padding: EdgeInsets.symmetric(horizontal:  1
+                Padding(padding: const EdgeInsets.symmetric(horizontal:  1
                 ),
                   child: Row(
                     children: [
@@ -299,7 +296,7 @@ class ContractPage extends StatelessWidget {
                         maxLength: 100,
                         controller: controller.priceController,
                         prefixIcon: null,
-                        inputType: TextInputType.number,
+                        inputType: TextInputType.phone,
                         textCapitalization: TextCapitalization.words, width: 210, align: TextAlign.left, height: 50,
                       ),
                     ],
@@ -307,7 +304,7 @@ class ContractPage extends StatelessWidget {
 
                 ),
                 const SizedBox(height: 33),
-                Padding(padding: EdgeInsets.symmetric(horizontal:  1
+                Padding(padding: const EdgeInsets.symmetric(horizontal:  1
                 ),
                   child: Row(
                     children: [
@@ -395,7 +392,7 @@ class ContractPage extends StatelessWidget {
                                 children: [
                                   TextSpan(
 
-                                    text:  controller.taskCountry,
+                                    text:  controller.taskData['country'],
                                     style: GoogleFonts.getFont('Libre Caslon Text',
                                       fontWeight: FontWeight.w500,
                                       fontSize: 12,
@@ -435,7 +432,7 @@ class ContractPage extends StatelessWidget {
                                   children: [
                                     TextSpan(
 
-                                      text:  controller.taskCity,
+                                      text:  controller.taskData['city'],
                                       style: GoogleFonts.getFont('Libre Caslon Text',
                                         fontWeight: FontWeight.w500,
                                         fontSize: 12,
@@ -479,7 +476,7 @@ class ContractPage extends StatelessWidget {
                             children: [
                               TextSpan(
 
-                                text:  controller.taskLocation,
+                                text:  controller.taskData['location'],
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
@@ -504,8 +501,7 @@ class ContractPage extends StatelessWidget {
                     text: 'Send Contract',
                     backgroundColor: const Color(0xff6A3BA8),
                     onPressed: () {
-                      controller.sendContract(1);
-                      controller1.updateClick("Waiting");
+                      controller.sendContract(controller.taskData['id']);
                       }, height: 50, fontSize: 12,
                   ),
                 ),

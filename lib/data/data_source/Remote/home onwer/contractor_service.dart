@@ -36,7 +36,7 @@ class ContractorService {
           List<dynamic> data = jsonResponse['data'];
           return data.map((worker) => worker as Map<String, dynamic>).toList();
         } else {
-          throw Exception("Unexpected data format: ${jsonResponse}");
+          throw Exception("Unexpected data format: $jsonResponse");
         }
       } else {
         throw Exception("Failed to load data, status code: ${response.statusCode}, message: ${response.body}");

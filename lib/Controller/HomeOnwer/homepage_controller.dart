@@ -32,7 +32,6 @@ class HomepageControllerImp extends GetxController {
       ContractorService contractorService = ContractorService();
       List<Map<String, dynamic>> contractors = await contractorService.getContractorByCategoryName(category_id);
       print("Contractors: $contractors");
-
       Get.toNamed(AppRoute.CategoryPage, arguments: {'category_id': category_id, 'contractors': contractors});
     } catch (e) {
       print("Error fetching contractors: $e");

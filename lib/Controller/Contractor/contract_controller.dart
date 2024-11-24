@@ -1,52 +1,57 @@
+import 'dart:convert';
+import 'package:fixit/data/data_source/Remote/auth/signin_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
+import 'package:http/http.dart'as http;
+import '../../Core/constant/link_api.dart';
 import '../../Core/constant/route.dart';
 
 class ContractController extends GetxController{
    late  TextEditingController dateController;
   late TextEditingController priceController ;
   late TextEditingController deadlineController ;
+   late final Map<String, dynamic> taskData;
 
-  String? taskTitle;
-   String? taskDescription;
-   String? taskCountry;
-   String ? taskCity;
-   String? taskLocation;
-   List<String>? taskImages=[];
-Future<void> sendContract(int taskId)async{
-  try{
-    final date =dateController.text;
-    final price= double.tryParse(priceController.text);
-    final deadline=deadlineController.text;
-    if(date.isEmpty || price == null ||  price <=0 || deadline.isEmpty){
-      Get.snackbar("invalid input", "please fill all fields");return;}
+   Future<void> sendContract(int taskId) async {
+     try {
+       SigninService signinService = SigninService();
+       String? token = await signinService.getToken();
 
-    //هةم بحط كود الارسال للداتا بيز
-    Get.offNamed(AppRoute.ContractorHomePage);
-   /* print("date: $dateController ====");
-    print("price: $priceController ====");
-    print("deadline: $deadlineController ====");*/
+       final url = Uri.parse(AppLink.sendContract(taskId));
 
+       final res = await http.post(
+         url,
+         headers: {
+           'Content-Type': 'application/json',
+           'Authorization': 'Bearer $token',
+         },
+         body: jsonEncode({
+           'payment_date': dateController.text,
+           'price': double.tryParse(priceController.text),
+           'end_date': deadlineController.text,
+         }),
+       );
 
-  }catch(e){
-    print('=========$e');
-  }
-}
+       if (res.statusCode == 200 || res.statusCode == 201) {
+         print("SendContract Successful");
+         Get.offNamed(AppRoute.ContractorHomePage);
+       } else {
+         print("Error: Failed to send contract");
+       }
+     } catch (e) {
+       print("Exception: $e");
+       throw Exception(e);
+     }
+   }
 @override
   void onInit() {
     super.onInit();
           dateController =TextEditingController();
           priceController =TextEditingController();
           deadlineController =TextEditingController();
-          final argument=Get.arguments;
-          taskTitle = argument['taskTitle'];
-          taskDescription = argument['taskDescription'];
-          taskCountry = argument['taskCountry'];
-          taskCity = argument['taskCity'];
-          taskLocation = argument['taskLocation'];
-          taskImages = List<String>.from(argument['taskImages'] ?? []);
-            }
+          taskData = Get.arguments['task'];
+
+}
   @override
   void dispose() {
     super.dispose();

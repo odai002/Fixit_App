@@ -17,7 +17,7 @@ class CustomCard extends StatelessWidget {
 
 
   const CustomCard({
-    Key? key,
+    super.key,
     required this.image,
     required this.email,
     required this.desc,
@@ -28,7 +28,7 @@ class CustomCard extends StatelessWidget {
     required this.buttonText,
     required this.onPressed, required this.id,
 
-}) : super(key: key);
+});
 
   @override
   Widget build(BuildContext context) {
@@ -107,13 +107,13 @@ class CustomCard extends StatelessWidget {
                                       'Libre Caslon Text',
                                       fontWeight: FontWeight.w500,
                                       fontSize: 13,
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(width: 18),
+                            const SizedBox(width: 18),
                             RichText(
                               text: TextSpan(
                                 children: [
@@ -131,7 +131,7 @@ class CustomCard extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 7),
+                        const SizedBox(height: 7),
                         Container(
                           width: 200,
                           child: RichText(
@@ -143,23 +143,23 @@ class CustomCard extends StatelessWidget {
                                     'Libre Caslon Text',
                                     fontWeight: FontWeight.w500,
                                     fontSize: 10,
-                                    color: Color(0xff000000),
+                                    color: const Color(0xff000000),
                                   ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(height: 9),
+                        const SizedBox(height: 9),
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.map,
                               color: Color(0xff9747FF),
                               size: 11,
                               semanticLabel: 'Text to announce in accessibility modes',
                             ),
-                            SizedBox(width: 5),
+                            const SizedBox(width: 5),
                             Container(
                               width: 80,
                               child: RichText(
@@ -171,14 +171,14 @@ class CustomCard extends StatelessWidget {
                                         'Libre Caslon Text',
                                         fontWeight: FontWeight.w500,
                                         fontSize: 7,
-                                        color: Color(0xff7F7F7F),
+                                        color: const Color(0xff7F7F7F),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            Column(
+                            const Column(
                               children: [
                                 Icon(
                                   Icons.email_rounded,
@@ -195,7 +195,7 @@ class CustomCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(width: 2),
+                            const SizedBox(width: 2),
                             Column(
                               children: [
                                 Container(
@@ -216,7 +216,7 @@ class CustomCard extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 Container(
                                   width: 90,
                                   child: RichText(
@@ -228,7 +228,7 @@ class CustomCard extends StatelessWidget {
                                             'Libre Caslon Text',
                                             fontWeight: FontWeight.w500,
                                             fontSize: 7,
-                                            color: Color(0xff7F7F7F),
+                                            color: const Color(0xff7F7F7F),
                                           ),
                                         ),
                                       ],

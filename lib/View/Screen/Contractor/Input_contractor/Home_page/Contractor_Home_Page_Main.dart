@@ -12,7 +12,7 @@ class ContractorHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ContractorHomeController controller = Get.put(ContractorHomeController(),permanent:true);
+    ContractorHomeController controller = Get.put(ContractorHomeController());
 
     return Scaffold(
       bottomNavigationBar: SnackBarBodyCON(),
@@ -53,15 +53,16 @@ class ContractorHomePage extends StatelessWidget {
                     return ListView.builder(
                       itemCount: controller.tasks.length,
                       itemBuilder: (context, index) {
-                        var task = controller.tasks[index];
+                        final task = controller.tasks[index];
                         return CustomCardCON(
                           image: Image.asset('assets/U.png'),
-                          email: task['email'],
-                          desc: task['desc'],
-                          number: task['number'],
-                          name: task['name'],
-                          category: task['category'],
-                          local: task['local'],
+                          email: task['email'] ?? 'Udai suleman@gmaail.com',
+                          desc: task['description'],
+                          number: task['number'] ?? '09932116554',
+                          name: task['name'] ?? "Udai",
+                          category: task['title'],
+                          local: '${task['country']} / ${task['city']} / ${task['location']}',
+                          taskId: task['id'],
                           onViewTask: () {
                             controller.viewTaskDetails(task);
                           },
