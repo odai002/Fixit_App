@@ -260,6 +260,5 @@ class SignIn extends StatelessWidget {
         ),
       )
     );
-
   }
 }

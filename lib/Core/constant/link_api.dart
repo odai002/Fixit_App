@@ -12,7 +12,7 @@ class AppLink {
 
   static const String getcontractorsbyservices = "$servrer/getcontractorbycategory";
 
-  static const String sendTask = "$servrer/create task";
+  static const String sendTask = "$servrer/createtask";
 
   //Contractor
 

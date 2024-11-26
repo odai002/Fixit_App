@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:fixit/Core/constant/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -35,13 +35,15 @@ class TaskpageControllerImp extends TaskpageController {
   late String selectedCity = 'Damascus';
   late List<File> selectedimage = [];
 
-  final SendTaskService sendTaskService = SendTaskService(); // إنشاء كائن من TaskService
+  late int categoryId;
+
+  final SendTaskService sendTaskService = SendTaskService();
 
   void showSuccessSnackbar(String message) {
     if (Get.isSnackbarOpen) {
       Get.closeCurrentSnackbar();
     }
-    Future.delayed(Duration(milliseconds: 100), () {
+    Future.delayed(const Duration(milliseconds: 100), () {
       Get.snackbar(
         "Success",
         message,
@@ -56,7 +58,7 @@ class TaskpageControllerImp extends TaskpageController {
     if (Get.isSnackbarOpen) {
       Get.closeCurrentSnackbar();
     }
-    Future.delayed(Duration(milliseconds: 100), () {
+    Future.delayed(const Duration(milliseconds: 100), () {
       Get.snackbar(
         "Error",
         message,
@@ -82,10 +84,10 @@ class TaskpageControllerImp extends TaskpageController {
           contractorId: contractor_id,
           images: selectedimage,
         );
-
         if (isSent) {
           showSuccessSnackbar("Task sent successfully");
           await Future.delayed(const Duration(seconds: 1));
+          Get.offNamed(AppRoute.CategoryPage,arguments:{'category_id':categoryId});
           return true;
         }
       } catch (e) {
@@ -122,6 +124,9 @@ class TaskpageControllerImp extends TaskpageController {
       titleController = TextEditingController();
       describeController = TextEditingController();
       locationController = TextEditingController();
+      final argument=Get.arguments as Map<String,dynamic>;
+      categoryId=argument['category_id'];
+
     }
     @override
     void dispose() {

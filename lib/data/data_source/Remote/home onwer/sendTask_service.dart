@@ -41,7 +41,7 @@ class SendTaskService {
         print('Task submitted successfully ${response.statusCode}');
         return true;
       } else {
-        print('Failed to submit task');
+        print('Failed to submit task ${response.statusCode}}');
         return false;
       }
     } catch (e) {

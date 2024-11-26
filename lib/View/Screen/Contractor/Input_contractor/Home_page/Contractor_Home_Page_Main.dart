@@ -56,12 +56,12 @@ class ContractorHomePage extends StatelessWidget {
                         final task = controller.tasks[index];
                         return CustomCardCON(
                           image: Image.asset('assets/U.png'),
-                          email: task['email'] ?? 'Udai suleman@gmaail.com',
+                          email: task['user']['email'],
                           desc: task['description'],
                           number: task['number'] ?? '09932116554',
-                          name: task['name'] ?? "Udai",
+                          name: task['user']['username'],
                           category: task['title'],
-                          local: '${task['country']} / ${task['city']} / ${task['location']}',
+                          local: '${task['user']['country']} / ${task['user']['city']} / ${task['user']['address']}',
                           taskId: task['id'],
                           onViewTask: () {
                             controller.viewTaskDetails(task);

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../../../Controller/HomeOnwer/category_controller.dart';
 import '../../../../../Widgets/Custom_App_bar.dart';
 import '../../../../../Widgets/Custom_Bottom_naf_Bar.dart';
@@ -8,18 +7,13 @@ import '../../../../../Widgets/Custom_Card_Widget.dart';
 import '../Category_Page/Category_Page_Components/Custom_Sorting_Text_B.dart';
 
 class CategoryPage extends StatelessWidget {
+  bool ascending = true;
    CategoryPage({super.key});
   final int categoryId = Get.arguments['category_id'];
 
   @override
   Widget build(BuildContext context) {
-/*
-    final List<Map<String, dynamic>> contractorsData = Get.arguments['contractors'];
-*/
-
     CategoryControllerImp controller = Get.put(CategoryControllerImp());
-
-    controller.fetchContractorsByCategory(categoryId);
 
     return Scaffold(
       appBar: CustomAppBar(title: '',),
@@ -40,13 +34,13 @@ class CategoryPage extends StatelessWidget {
             child: SortingSegmentedControl(
               title: 'Sort By',
               buttonCaption: 'Rating',
-              onSelectionChanged: (int index) => controller.sortItems(index),
+              onSelectionChanged: (int index) => controller.sortContractors(ascending),
             ),
           ),
           Expanded(
             child: Obx(() {
               if (controller.isLoading.value) {
-                return const Center(child: CircularProgressIndicator());  // عرض دائرة التحميل أثناء التحميل
+                return const Center(child: CircularProgressIndicator());
               }
 
               if (controller.contractors.isEmpty) {

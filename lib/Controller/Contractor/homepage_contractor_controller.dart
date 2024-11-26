@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import '../../Core/constant/route.dart';
 import '../../data/data_source/Remote/contractor/task_service.dart';
@@ -7,18 +9,13 @@ class ContractorHomeController extends GetxController {
   var isLoading = true.obs;
   RxString contractStatus = "Accept".obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    fetchedTasks();
-  }
 
   void fetchedTasks() async {
     TasksContractorService tasksContractorService = TasksContractorService();
     try {
       isLoading(true);
       var fetchedData = await tasksContractorService.getAllTasks();
-      print("Fetched Tasks: $fetchedData");
+      log("Fetched Tasks: $fetchedData");
 
       if (fetchedData.isNotEmpty) {
         tasks.value = fetchedData;
@@ -36,8 +33,6 @@ class ContractorHomeController extends GetxController {
 
 
   void viewTaskDetails(Map<String, dynamic> task) {
-
-
     if (isLoading.value == false) {
       var taskData = tasks.firstWhere(
             (t) => t['id'] == task['id'],
@@ -60,8 +55,32 @@ class ContractorHomeController extends GetxController {
       print("Tasks are still loading...");
     }
   }
-  void updateClick(String newStatus){
-    contractStatus.value=newStatus;
-    update();
+
+  void updateClick(String newStatus) async {
+    /*try {
+      // Simulate sending the contract to the server
+      ContractController contractController =ContractController();
+      var response = await contractController.sendContract(taskId);
+
+      if (response == true) {
+        // Update the contract status to "Waiting" after successful submission
+        contractStatus.value = "Waiting";
+        Get.snackbar("Success", "Contract sent successfully!");
+      } else {
+        Get.snackbar("Error", "Failed to send the contract.");
+      }
+    } catch (e) {
+      print("Error while sending contract: $e");
+      Get.snackbar("Error", "An error occurred while sending the contract.");
+    } finally {
+      update(); // Notify listeners of the status update
+    }
+  }*/
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchedTasks();
   }
 }
