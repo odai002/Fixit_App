@@ -35,12 +35,15 @@ class _DropdownMenuExampleState extends State<DropdownMenuExample> {
         items: widget.items.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
-            child: Text(
-              value,
-              style: GoogleFonts.libreCaslonText(
-                textStyle: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                value,
+                style: GoogleFonts.libreCaslonText(
+                  textStyle: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),
@@ -61,7 +64,7 @@ class _DropdownMenuExampleState extends State<DropdownMenuExample> {
           'User Type',
           style: GoogleFonts.libreCaslonText(
             textStyle: const TextStyle(
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: FontWeight.w500,
             ),
           ),

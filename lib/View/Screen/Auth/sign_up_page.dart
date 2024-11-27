@@ -16,6 +16,7 @@ class SignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     SignupControllerImp controller =Get.put(SignupControllerImp());
     return Scaffold(
+      backgroundColor: Colors.white,
     resizeToAvoidBottomInset: false,
           body:Center(
               child: SingleChildScrollView(
