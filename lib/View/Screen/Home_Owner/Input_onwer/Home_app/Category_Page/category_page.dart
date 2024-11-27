@@ -16,6 +16,7 @@ class CategoryPage extends StatelessWidget {
     CategoryControllerImp controller = Get.put(CategoryControllerImp());
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: CustomAppBar(title: '',),
       bottomNavigationBar: SnackBarBody(),
       resizeToAvoidBottomInset: false,

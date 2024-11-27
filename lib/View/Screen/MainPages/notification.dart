@@ -15,7 +15,7 @@ class Notification extends StatelessWidget {
         bottomNavigationBar: SnackBarBody(),
         resizeToAvoidBottomInset: true,
       body:Padding(
-        padding: EdgeInsets.all(screenWidth * 0.09),
+        padding: EdgeInsets.all(screenWidth * 0.07),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,9 +23,9 @@ class Notification extends StatelessWidget {
                Row(
                 mainAxisAlignment:MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.notifications_rounded,size: 60,color:Colors.black,),
+                  const Icon(Icons.notifications_rounded,size: 50,color:Colors.black,),
                   const SizedBox(width: 5,),
-                  Text('Notification',style:TextStyle(fontSize:screenWidth * 0.06,fontWeight:FontWeight.bold),),
+                  Text('Notification',style:TextStyle(fontSize:screenWidth * 0.06,fontWeight:FontWeight.w500),),
                 ],
               ),
               SizedBox(height: screenHeight * 0.06),
