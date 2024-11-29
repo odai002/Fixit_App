@@ -1,33 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../Controller/Contractor/homepage_contractor_controller.dart';
 import '../../data/data_source/Remote/contractor/task_service.dart';
 import 'Custom_Button.dart';
-import 'Custom_Star_widget.dart'; // Add the StarWidget import
 
 class CustomCardCON extends StatelessWidget {
-  final Image image;
   final String name;
   final String email;
-  final String desc;
   final String number;
-  final String category;
   final String local;
+  final String category;
+  final String desc;
   final int taskId;
   final Function() onViewTask;
 
   const CustomCardCON({
     super.key,
-    required this.image,
-    required this.email,
-    required this.desc,
-    required this.number,
     required this.name,
-    required this.category,
+    required this.email,
+    required this.number,
     required this.local,
-    required this.onViewTask,
+    required this.category,
+    required this.desc,
     required this.taskId,
+    required this.onViewTask, required Image image,
   });
 
   @override
@@ -52,99 +49,123 @@ class CustomCardCON extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Avatar Image
                   ClipOval(
                     child: Image.asset(
-                      'assets/U.png', // Use the passed image asset
-                      width: 60,
-                      height: 60,
+                      'assets/U.png', // Replace with your image asset
+                      width: 80,
+                      height: 80,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  SizedBox(width: 12),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Name and Rating in one row
+                        // User Name and Task Category
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Expanded(
-                              child: Text(
-                                name,
-                                style: GoogleFonts.libreCaslonText(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                ),
-                                overflow: TextOverflow.ellipsis,
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    name,
+                                    style: GoogleFonts.libreCaslonText(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    category,
+                                    style: GoogleFonts.libreCaslonText(
+                                      fontSize: 11,
+                                      color: Colors.grey[600],
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
                               ),
                             ),
-                            SizedBox(width: 8),
-                            const StarDisplayWidget(
-                              filledStar: Icon(Icons.star, color: Colors.yellow, size: 11),
-                              unfilledStar: Icon(Icons.star, color: Colors.grey, size: 11),
+                            const SizedBox(width: 8),
+                            IconButton(
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                                size: 18,
+                              ),
+                              onPressed: () async {
+                                Get.defaultDialog(
+                                  title: "Confirm Delete",
+                                  middleText: 'Are you sure you want to delete this task?',
+                                  textConfirm: "Yes",
+                                  textCancel: "Cancel",
+                                  confirmTextColor: Colors.white,
+                                  onConfirm: () async {
+                                    try {
+                                      await tasksContractorService.deleteTask(taskId);
+                                      Get.back();
+                                      controller.fetchedTasks();
+                                    } catch (e) {
+                                      Get.snackbar("Error", "Failed to delete task: $e");
+                                    }
+                                  },
+                                );
+                              },
                             ),
                           ],
                         ),
-                        SizedBox(height: 6),
+                        const SizedBox(height: 6),
+                        // Description placed below name and category
                         Text(
-                          category,
+                          desc,
                           style: GoogleFonts.libreCaslonText(
-                            fontSize: 11,
-                            color: Colors.grey[600],
+                            fontSize: 12,
+                            color: Colors.grey[800],
                           ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 4),
-              // Description and Task Action Button Row
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomButton(
-                    fontSize: 8,
-                    width: 80,
-                    height: 40,
-                    textcolor: 0xffffffff,
-                    backgroundColor: const Color(0xFF6A3BA8),
-                    onPressed: () async {
-                      try {
-                        await tasksContractorService.acceptTask(taskId);
-                      } catch (e) {
-                        Get.snackbar("Error", "Failed to accept task: $e");
-                      }
-                    },
-                    text: "Accept", // Button text for accepting the task
-                  ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      desc,
-                      style: GoogleFonts.libreCaslonText(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 12),
-              // Bottom Row with Location, Email, and Phone
+              const SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: CustomButton(
+                      fontSize: 8,
+                      width: 80,
+                      height: 40,
+                      textcolor: 0xffffffff,
+                      backgroundColor: const Color(0xFF6A3BA8),
+                      onPressed: () async {
+                        try {
+                          await tasksContractorService.acceptTask(taskId);
+                          controller.fetchedTasks();
+                        } catch (e) {
+                          Get.snackbar("Error", "Failed to accept task: $e");
+                        }
+                      },
+                      text: "Accept",
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+
                   Flexible(
                     child: Row(
                       children: [
-                        Icon(Icons.location_on, size: 10, color: Color(0xFF6A3BA8)),
-                        SizedBox(width: 4),
+
+                        const Icon(Icons.location_on, size: 10, color: Color(0xFF6A3BA8)),
+                        const SizedBox(width: 4),
                         Expanded(
                           child: Text(
                             local,
@@ -161,8 +182,8 @@ class CustomCardCON extends StatelessWidget {
                   Flexible(
                     child: Row(
                       children: [
-                        Icon(Icons.email, size: 10, color: Color(0xFF6A3BA8)),
-                        SizedBox(width: 4),
+                        const Icon(Icons.email, size: 10, color: Color(0xFF6A3BA8)),
+                        const SizedBox(width: 4),
                         Expanded(
                           child: Text(
                             email,
@@ -179,8 +200,9 @@ class CustomCardCON extends StatelessWidget {
                   Flexible(
                     child: Row(
                       children: [
-                        Icon(Icons.phone, size: 10, color: Color(0xFF6A3BA8)),
-                        SizedBox(width: 4),
+
+                        const Icon(Icons.phone, size: 10, color: Color(0xFF6A3BA8)),
+                        const SizedBox(width: 4),
                         Text(
                           number,
                           style: GoogleFonts.libreCaslonText(
@@ -188,11 +210,13 @@ class CustomCardCON extends StatelessWidget {
                             color: Colors.grey[600],
                           ),
                         ),
+
                       ],
                     ),
                   ),
                 ],
               ),
+
             ],
           ),
         ),
