@@ -1,5 +1,5 @@
 class AppLink {
-  static const String servrer = "http://10.0.2.2:8000/api";
+  static const String servrer = "http://192.168.1.111:8000/api";
 
   // ====================================
 //Auth

@@ -10,6 +10,7 @@ abstract class CategoryController extends GetxController{
 class CategoryControllerImp extends CategoryController {
   var isLoading = false.obs;
   var contractors = <Map<String, dynamic>>[].obs;
+  Map<int,String> buttonstate={};
   int? categoryId;
 
   @override
@@ -17,7 +18,9 @@ class CategoryControllerImp extends CategoryController {
     super.onInit();
     final arguments = Get.arguments as Map<String, dynamic>;
     categoryId = arguments['category_id'];
-    fetchContractorsByCategory(categoryId!);
+    if (categoryId != null) {
+      fetchContractorsByCategory(categoryId!);
+    }
   }
   void fetchContractorsByCategory(int categoryId) async {
     this.categoryId=categoryId;
@@ -35,13 +38,27 @@ class CategoryControllerImp extends CategoryController {
   }
 
   @override
-  void HireNow(int contractor_id,) async {
-    Get.toNamed(
+  void HireNow(int contractor_id) async {
+    var isTaskSent = await Get.toNamed(
       AppRoute.TaskPage,
-      arguments: {'id': contractor_id,'category_id':categoryId},
+      arguments: {'id': contractor_id, 'category_id': categoryId},
     );
+
+    final bool taskSent = Get.arguments?['taskSent'] ?? false;
+    print(taskSent);
+    if (taskSent == true) {
+      updateButtonState(contractor_id, "Hire Again");
+    update();
+    }
+  }
+
+
+
+  void updateButtonState(int contractor_id,String newState){
+    buttonstate[contractor_id]= newState;
     update();
   }
+
 
   void sortContractors(bool ascending) {
     if (ascending) {

@@ -1,8 +1,8 @@
-import 'package:fixit/Core/constant/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import '../../Core/constant/route.dart';
 import '../../data/data_source/Remote/home onwer/sendTask_service.dart';
 
 abstract class TaskpageController extends GetxController {
@@ -87,7 +87,7 @@ class TaskpageControllerImp extends TaskpageController {
         if (isSent) {
           showSuccessSnackbar("Task sent successfully");
           await Future.delayed(const Duration(seconds: 1));
-          Get.offNamed(AppRoute.CategoryPage,arguments:{'category_id':categoryId});
+          Get.offNamed(AppRoute.CategoryPage, arguments: {'category_id': categoryId,'taskSent': true}); // أو استخدم Get.back()
           return true;
         }
       } catch (e) {

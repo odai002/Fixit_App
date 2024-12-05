@@ -11,24 +11,18 @@ class ContractorService {
     SigninService signinService = SigninService();
     String? token = await signinService.getToken();
 
-    if (token == null) {
-      throw Exception("No token found");
-    }
-
     const String url = AppLink.getcontractorsbyservices;
     try {
-      print("Sending request with Category ID: $category_id");
-
       final response = await http.post(
         Uri.parse(url),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
         },
-        body: jsonEncode({
-          'category_id': category_id
-        }),
+        body: jsonEncode({'category_id': category_id}),
       );
+
+
 
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = jsonDecode(response.body);
@@ -40,8 +34,9 @@ class ContractorService {
           throw Exception("Unexpected data format: $jsonResponse");
         }
       } else {
-        throw Exception("Failed to load data, status code: ${response
-            .statusCode}, message: ${response.body}");
+        print("Error: Failed to load data");
+        throw Exception(
+            "Failed to load data");
       }
     } catch (e) {
       print("Error occurred: $e");
@@ -52,11 +47,12 @@ class ContractorService {
 
 
 
+
   Future<List<Map<String, dynamic>>> getAllservice() async {
     SigninService signinService = SigninService();
     String? token = await signinService.getToken();
     const url = AppLink.getcategory;
-    String baseUrl = "http://10.0.2.2:8000/storage/";
+    String baseUrl = "http://192.168.1.111:8000/storage/";
     try {
       final res = await http.get(Uri.parse(url), headers: {"Authorization": "Bearer $token"});
 

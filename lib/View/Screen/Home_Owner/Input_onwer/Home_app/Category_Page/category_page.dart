@@ -53,6 +53,7 @@ class CategoryPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final contractor = controller.contractors[index];
                   final contractor_id = contractor['id'];
+                  String buttonText = controller.buttonstate[contractor_id] ?? 'Hire Now';
 
                   return SingleChildScrollView(
                     child: CustomCard(
@@ -63,7 +64,7 @@ class CategoryPage extends StatelessWidget {
                       name: contractor['username'],
                       category: contractor['category'],
                       local: "${contractor['city']}, ${contractor['country']}",
-                      buttonText: 'Hire Now',
+                      buttonText: buttonText,
                       id: contractor['id'],
                       onPressed: (id) {
                         controller.HireNow(contractor_id);

@@ -13,7 +13,6 @@ class HomepageControllerImp extends GetxController {
     }
 
     try {
-      print("Category ID: $category_id");
       ContractorService contractorService = ContractorService();
       List<Map<String, dynamic>> contractors = await contractorService.getContractorByCategoryName(category_id);
       Get.toNamed(AppRoute.CategoryPage, arguments: {'category_id': category_id, 'contractors': contractors});
