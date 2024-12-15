@@ -5,6 +5,7 @@ import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/Category_Page/
 import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/Home_page.dart';
 import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/task_page.dart';
 import 'package:fixit/View/Screen/MainPages/notification.dart';
+import 'package:fixit/View/Screen/language.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'Core/constant/route.dart';
 import 'View/Screen/Auth/forgetpassword/forgetpassword.dart';
@@ -20,11 +21,8 @@ import 'View/Screen/Splach_screen/splach_screen.dart';
 
 List<GetPage<dynamic>>? routes =[
   //Splach
-  GetPage(name:'/' , page: () =>const SplachScreen()),
-
-/*
-  GetPage(name:'/' , page: () =>  Test()),
-*/
+  GetPage(name:'/' , page: () =>const Language()),
+  GetPage(name:AppRoute.SplachScreen, page: () =>const SplachScreen()),
 
 // Auth
   GetPage(name:AppRoute.SignIn , page: () => SignIn()),

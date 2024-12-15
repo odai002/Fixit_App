@@ -87,7 +87,7 @@ class TaskpageControllerImp extends TaskpageController {
         if (isSent) {
           showSuccessSnackbar("Task sent successfully");
           await Future.delayed(const Duration(seconds: 1));
-          Get.offNamed(AppRoute.CategoryPage, arguments: {'category_id': categoryId,'taskSent': true}); // أو استخدم Get.back()
+          Get.offNamed(AppRoute.CategoryPage, arguments: {'category_id': categoryId,'taskSent': true});
           return true;
         }
       } catch (e) {

@@ -39,7 +39,7 @@ class SignIn extends StatelessWidget {
                             children: [
                               TextSpan(
 
-                                text:  "Sign",
+                                text:  "3".tr,
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 24,
@@ -57,7 +57,7 @@ class SignIn extends StatelessWidget {
                             children: [
                               TextSpan(
 
-                                text:  "in",
+                                text:  "4".tr,
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 24,
@@ -77,7 +77,7 @@ class SignIn extends StatelessWidget {
                       children: [
                         TextSpan(
 
-                          text:  "Enter your credential to login",
+                          text:  "12".tr,
                           style: GoogleFonts.getFont('Libre Caslon Text',
                             fontWeight: FontWeight.w500,
                             fontSize: 12,
@@ -98,7 +98,7 @@ class SignIn extends StatelessWidget {
                       },
                       maxLength: 100,
                       controller: controller.email,
-                      name: "Email...",
+                      name: "11".tr,
                       prefixIcon: Icons.email_rounded,
                       prefixIconColor:const Color(0xff6A3BA8),
                       inputType: TextInputType.emailAddress,
@@ -119,7 +119,7 @@ class SignIn extends StatelessWidget {
 
                         obscureText:controller.isshowpassword,
                         controller:controller.password ,
-                        name: "password...",
+                        name: "10".tr,
                         prefixIcon: Icons.lock,
                         prefixIconColor:const Color(0xff6A3BA8),
                         inputType: TextInputType.visiblePassword,
@@ -159,7 +159,7 @@ class SignIn extends StatelessWidget {
                             text: TextSpan(
                               children: [
                                 TextSpan(
-                                  text:  "Forgot Password?",
+                                  text:  "9".tr,
                                   style: GoogleFonts.getFont('Libre Caslon Text',
 
                                     fontWeight: FontWeight.w500,
@@ -184,7 +184,7 @@ class SignIn extends StatelessWidget {
                             height: 50, fontSize: 12,
                             width: 250,
                             textcolor: 0xffffffff,
-                            text: 'Sign in',
+                            text: '8'.tr,
                             backgroundColor: const Color(0xff6A3BA8),
                             onPressed:() {
                               controller.Signin();
@@ -203,7 +203,7 @@ class SignIn extends StatelessWidget {
                               children: [
                                 TextSpan(
 
-                                  text:  "Don't have an account ?",
+                                  text:  "6".tr,
                                   style: GoogleFonts.getFont('Libre Caslon Text',
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12,
@@ -237,7 +237,7 @@ class SignIn extends StatelessWidget {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text:  "Sign up",
+                                    text:  "7".tr,
                                     style: GoogleFonts.getFont('Libre Caslon Text',
 
                                       fontWeight: FontWeight.w500,
