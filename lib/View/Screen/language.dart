@@ -22,7 +22,7 @@ class Language extends GetView<LocaleController> {
               width:double.infinity,
               child: MaterialButton(
                 onPressed:(){
-                  controller.ChangeLanguage('ar');
+                  controller.ChangeLanguage("ar");
                   Get.offNamed(AppRoute.SplachScreen);
                 },
                 color:Colors.purple,
@@ -37,7 +37,7 @@ class Language extends GetView<LocaleController> {
               width:double.infinity,
               child: MaterialButton(
                 onPressed:(){
-                  controller.ChangeLanguage('en');
+                  controller.ChangeLanguage("en");
                   Get.offNamed(AppRoute.SplachScreen);
                 },
                 color:Colors.purple,

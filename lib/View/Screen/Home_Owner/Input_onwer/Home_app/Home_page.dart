@@ -37,11 +37,7 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Flexible(child: _buildRichText("Pick a")),
-                      const SizedBox(width: 8.0),
-                      Flexible(child: _buildRichText("Service", color: const Color(0xff6A3BA8))),
-                      const SizedBox(width: 8.0),
-                      Flexible(child: _buildRichText("that you need!")),
+                      Flexible(child: _buildRichText("2".tr, color: const Color(0xff6A3BA8))),
                     ],
                   ),
                 ),

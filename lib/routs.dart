@@ -21,8 +21,10 @@ import 'View/Screen/Splach_screen/splach_screen.dart';
 
 List<GetPage<dynamic>>? routes =[
   //Splach
+/*
   GetPage(name:'/' , page: () =>const Language()),
-  GetPage(name:AppRoute.SplachScreen, page: () =>const SplachScreen()),
+*/
+  GetPage(name:'/', page: () =>const SplachScreen()),
 
 // Auth
   GetPage(name:AppRoute.SignIn , page: () => SignIn()),

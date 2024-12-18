@@ -110,8 +110,8 @@ class CustomCardCON extends StatelessWidget {
                    ),
                        Obx(()=> CustomButton(
                            fontSize:6.5,
-                         width: 80,
-                         height: 10,
+                         width: 70,
+                         height: 40,
                          textcolor: 0xffffffff,
                          backgroundColor: const Color(0xff6A3BA8),
                          onPressed: () async{

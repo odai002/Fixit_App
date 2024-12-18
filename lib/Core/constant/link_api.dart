@@ -14,6 +14,9 @@ class AppLink {
 
   static const String sendTask = "$servrer/createtask";
 
+  static const String myContracts = "$servrer/get_all_my_contract";
+
+
   //Contractor
 
   static const String getMyTasks = "$servrer/get_all_my_task";
