@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -44,13 +45,13 @@ class NotificationCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle, // Circular shape for the container
+                    shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.15), // Subtle shadow color
-                        blurRadius: 0.5, // Minimal blur, keeps the shadow sharp
-                        spreadRadius: 0.2, // Slight spread to hug the edge of the image
-                        offset: Offset(0, 0), // No offset to keep the shadow centered
+                        color: Colors.grey.withOpacity(0.15),
+                        blurRadius: 0.5,
+                        spreadRadius: 0.2,
+                        offset: Offset(0, 0),
                       ),
                     ],
                   ),
@@ -58,57 +59,86 @@ class NotificationCard extends StatelessWidget {
                     child: Image.asset(
                       'assets/U.png',
                       fit: BoxFit.cover,
-                      width: 50, // Circular size
+                      width: 50,
                       height: 50,
                     ),
                   ),
                 ),
               ),
-
-
-
-
-              SizedBox(width: screenWidth * 0.04),
               Expanded(
-                child: Text(
-                  username,
-                  style: GoogleFonts.getFont('Libre Caslon Text',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                    color: const Color(0xff000000),
-                  ),
-                ),
-              ),
-              Text(
-                time,
-                style: TextStyle(
-                  fontSize: screenWidth * 0.04,
-                  color: Colors.grey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      username,
+                      style: GoogleFonts.getFont(
+                        'Libre Caslon Text',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        color: const Color(0xff000000),
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * 0.005),
+                    Text(
+                      time,
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.04,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
           SizedBox(height: screenHeight * 0.01),
-          Text(
-            message,
-              style: GoogleFonts.getFont('Libre Caslon Text',
-                fontWeight: FontWeight.w500,
-                fontSize: 10,
-                color: const Color(0xff000000),
+          Row(
+            children: [
+              Expanded(
+                child: RichText(
+                  text: TextSpan(
+                    text: message,
+                    style: GoogleFonts.getFont(
+                      'Libre Caslon Text',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 10,
+                      color: const Color(0xff000000),
+                    ),
+                    children: [
+                      TextSpan(
+                        text: "  Show Contract",
+                        style: TextStyle(
+                          color: const Color(0xff6A3BA8),
+                          fontWeight: FontWeight.w600,
+                          decoration: TextDecoration.underline,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // Handle "Show Contract" action
+                          },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-          ),
-          if (buttons != null) ...[
-            SizedBox(height: screenHeight * 0.015),
+          SizedBox(height: screenHeight * 0.015),
+          if (buttons != null)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: buttons!.map((buttonText) {
                 return Flexible(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0), // Adjust spacing here
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Handle Accept/Refuse action
+                      },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: buttonText == 'Accept' ? Color(0xff6A3BA8) : Colors.white,
+                        backgroundColor: buttonText == 'Accept'
+                            ? const Color(0xff6A3BA8)
+                            : Colors.white,
                         side: const BorderSide(color: Color(0xff6A3BA8)),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -122,7 +152,9 @@ class NotificationCard extends StatelessWidget {
                         child: Text(
                           buttonText,
                           style: TextStyle(
-                            color: buttonText == 'Accept' ? Colors.white : Color(0xff6A3BA8),
+                            color: buttonText == 'Accept'
+                                ? Colors.white
+                                : const Color(0xff6A3BA8),
                             fontSize: screenWidth * 0.04,
                           ),
                         ),
@@ -132,7 +164,6 @@ class NotificationCard extends StatelessWidget {
                 );
               }).toList(),
             ),
-          ]
         ],
       ),
     );
