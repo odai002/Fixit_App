@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,6 +39,7 @@ class NotificationCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
@@ -66,62 +66,62 @@ class NotificationCard extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      username,
-                      style: GoogleFonts.getFont(
-                        'Libre Caslon Text',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-                    SizedBox(height: screenHeight * 0.005),
-                    Text(
-                      time,
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.04,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  username,
+                  style: GoogleFonts.getFont(
+                    'Libre Caslon Text',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    color: const Color(0xff000000),
+                  ),
+                ),
+              ),
+              Text(
+                time,
+                style: TextStyle(
+                  fontSize: screenWidth * 0.04,
+                  color: Colors.grey,
                 ),
               ),
             ],
           ),
           SizedBox(height: screenHeight * 0.01),
-          Row(
-            children: [
-              Expanded(
-                child: RichText(
-                  text: TextSpan(
-                    text: message,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0), // Padding for description and text button
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Text(
+                    message,
                     style: GoogleFonts.getFont(
                       'Libre Caslon Text',
                       fontWeight: FontWeight.w500,
                       fontSize: 10,
                       color: const Color(0xff000000),
                     ),
-                    children: [
-                      TextSpan(
-                        text: "  Show Contract",
-                        style: TextStyle(
-                          color: const Color(0xff6A3BA8),
-                          fontWeight: FontWeight.w600,
-                          decoration: TextDecoration.underline,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            // Handle "Show Contract" action
-                          },
-                      ),
-                    ],
                   ),
                 ),
-              ),
-            ],
+                TextButton(
+                  onPressed: () {
+                    // Handle "Show Contract" action
+                  },
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    minimumSize: Size(0, 0),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  child: Text(
+                    "Show Contract",
+                    style: TextStyle(
+                      color: const Color(0xff6A3BA8),
+                      fontWeight: FontWeight.w600,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(height: screenHeight * 0.015),
           if (buttons != null)
