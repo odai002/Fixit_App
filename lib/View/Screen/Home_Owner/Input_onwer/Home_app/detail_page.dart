@@ -10,12 +10,25 @@ class _ContractorProfilePageState extends State<ContractorProfilePage> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
+  // Variables for dynamic data
   final List<String> _imageList = [
     'assets/9.jpg',
     'assets/8.jpg',
     'assets/7.jpg',
     // Add more images here
   ];
+
+  final String contractorName = "Mhamad Alshame";
+  final String contractorProfession = "Electrician";
+  final String phoneNumber = "0945113366";
+  final String email = "Mh233@gmail.com";
+  final String description = "I'm dedicated, professional, and highly experienced electrical engineer with nearly 20 years in the field.";
+  final String location = "Syria / Rif Damashq / 55666 Olive Viaduct";
+  final int reviewCount = 25;
+  final String reviewText = "He fixed my electric problem in time but the price was a bit expensive.";
+  final String reviewerName = "Jhon Lemon";
+  final String reviewerImage = 'assets/reviewer_placeholder.png'; // Replace with actual image
+  final String hireButtonText = "Hire Now";
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +46,7 @@ class _ContractorProfilePageState extends State<ContractorProfilePage> {
             Icon(Icons.location_on, color: Color(0xFF59308E)),
             SizedBox(width: 8),
             Text(
-              "Syria / Rif Damashq / 55666 Olive Viaduct",
+              location,
               style: GoogleFonts.roboto(fontSize: 10),
             ),
           ],
@@ -100,25 +113,25 @@ class _ContractorProfilePageState extends State<ContractorProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Mhamad Alshame",
+                        contractorName,
                         style: GoogleFonts.roboto(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        "Electrician",
+                        contractorProfession,
                         style: GoogleFonts.roboto(fontSize: 12, color: Colors.grey),
                       ),
                       Row(
                         children: [
                           Icon(Icons.phone, color: Color(0xFF59308E), size: 10),
                           SizedBox(width: 4),
-                          Text("0945113366", style: GoogleFonts.roboto(fontSize: 10)),
+                          Text(phoneNumber, style: GoogleFonts.roboto(fontSize: 10)),
                           SizedBox(width: 16),
                           Icon(Icons.email, color: Color(0xFF59308E), size: 10),
                           SizedBox(width: 4),
-                          Text("Mh233@gmail.com", style: GoogleFonts.roboto(fontSize: 10)),
+                          Text(email, style: GoogleFonts.roboto(fontSize: 10)),
                         ],
                       ),
                     ],
@@ -133,7 +146,7 @@ class _ContractorProfilePageState extends State<ContractorProfilePage> {
               ),
               SizedBox(height: 8),
               Text(
-                "I'm dedicated, professional, and highly experienced electrical engineer with nearly 20 years in the field.",
+                description,
                 style: GoogleFonts.roboto(fontSize: 12),
               ),
               SizedBox(height: 24),
@@ -142,7 +155,7 @@ class _ContractorProfilePageState extends State<ContractorProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Reviews (25)",
+                    "Reviews ($reviewCount)",
                     style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
                   TextButton(
@@ -165,10 +178,10 @@ class _ContractorProfilePageState extends State<ContractorProfilePage> {
               // Single review
               ListTile(
                 leading: CircleAvatar(
-                  backgroundImage: AssetImage('assets/reviewer_placeholder.png'), // Replace with actual image
+                  backgroundImage: AssetImage(reviewerImage), // Replace with actual image
                 ),
                 title: Text(
-                  "Jhon Lemon",
+                  reviewerName,
                   style: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 12),
                 ),
                 subtitle: Column(
@@ -184,7 +197,7 @@ class _ContractorProfilePageState extends State<ContractorProfilePage> {
                     ),
                     SizedBox(height: 4),
                     Text(
-                      "He fixed my electric problem in time but the price was a bit expensive.",
+                      reviewText,
                       style: GoogleFonts.roboto(fontSize: 10),
                     ),
                   ],
@@ -209,7 +222,7 @@ class _ContractorProfilePageState extends State<ContractorProfilePage> {
                     ),
                   ),
                   child: Text(
-                    "Hire Now",
+                    hireButtonText,
                     style: GoogleFonts.roboto(fontSize: 14, color: Colors.white),
                   ),
                 ),
