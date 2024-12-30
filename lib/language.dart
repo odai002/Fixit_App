@@ -1,7 +1,8 @@
-import 'package:fixit/Core/constant/route.dart';
-import 'package:fixit/Core/localization/changelocal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'Core/constant/route.dart';
+import 'Core/localization/changelocal.dart';
 
 class Language extends GetView<LocaleController> {
   const Language({super.key});

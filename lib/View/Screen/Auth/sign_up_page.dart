@@ -38,7 +38,7 @@ class SignUp extends StatelessWidget {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: "Create",
+                                    text: "110".tr,
                                     style: GoogleFonts.getFont(
                                       'Libre Caslon Text',
                                       fontWeight: FontWeight.w500,
@@ -54,7 +54,7 @@ class SignUp extends StatelessWidget {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: "account",
+                                    text: "111".tr,
                                     style: GoogleFonts.getFont(
                                       'Libre Caslon Text',
                                       fontWeight: FontWeight.w500,
@@ -72,7 +72,7 @@ class SignUp extends StatelessWidget {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: "Please Fill your information below ",
+                                text: "112".tr,
                                 style: GoogleFonts.getFont(
                                   'Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
@@ -93,7 +93,7 @@ class SignUp extends StatelessWidget {
                             },
                             maxLength: 100,
                             controller: controller.username,
-                            name: "username...",
+                            name: "102".tr,
                             prefixIcon: Icons.person_rounded,
                             prefixIconColor:const Color(0xff6A3BA8),
                             inputType: TextInputType.name,
@@ -110,7 +110,7 @@ class SignUp extends StatelessWidget {
 
                             },                      maxLength: 100,
                             controller: controller.email,
-                            name: "Email...",
+                            name: "11".tr,
                             prefixIcon: Icons.email_rounded,
                             inputType: TextInputType.emailAddress,
                             prefixIconColor:const Color(0xff6A3BA8),
@@ -128,7 +128,7 @@ class SignUp extends StatelessWidget {
                             },
                             maxLength: 100,
                             controller: controller.phone,
-                            name: "phone...",
+                            name: "103".tr,
                             prefixIconColor:const Color(0xff6A3BA8),
                             prefixIcon: Icons.phone_android_rounded,
                             inputType: TextInputType.phone,
@@ -202,7 +202,7 @@ class SignUp extends StatelessWidget {
                             maxLength: 100,
                             controller: controller.address,
                             prefixIconColor:const Color(0xff6A3BA8),
-                            name: "type your street address...",
+                            name: "104".tr,
                             prefixIcon: Icons.streetview_rounded,
                             inputType: TextInputType.name,
                             textCapitalization: TextCapitalization.words,
@@ -219,7 +219,7 @@ class SignUp extends StatelessWidget {
                               maxLength: 100,
                               obscureText: controller.isshowpassword,
                               controller: controller.password,
-                              name: "password...",
+                              name: "10".tr,
                               prefixIcon: Icons.lock,
                             prefixIconColor:const Color(0xff6A3BA8),
                             inputType: TextInputType.name,
@@ -247,7 +247,7 @@ class SignUp extends StatelessWidget {
                               obscureText: controller.isConfirmshowpassword,
                               prefixIconColor:const Color(0xff6A3BA8),
                               controller: controller.password_confirmation,
-                              name: "confirm password...",
+                              name: "105".tr,
                               prefixIcon: Icons.lock,
                               inputType: TextInputType.name,
                               textCapitalization: TextCapitalization.words,
@@ -270,7 +270,7 @@ class SignUp extends StatelessWidget {
                                     fontSize: 12,
                                     height: 50,
                                     textcolor: 0xffFFFFFF,
-                                    text: 'Register',
+                                    text: '113'.tr,
                                     backgroundColor: const Color(0xff6A3BA8),
                                     width: 120,
                                     onPressed: () async{
@@ -284,7 +284,7 @@ class SignUp extends StatelessWidget {
                                   height: 50,
                                   textcolor: 0xff6A3BA8,
                                   width: 120,
-                                  text: 'Cancel',
+                                  text: '107'.tr,
                                   backgroundColor: const Color(0xffFFFFFF),
                                   onPressed: () {
                                     controller.Cancel();

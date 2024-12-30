@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:fixit/View/Screen/language.dart';
 import 'package:fixit/data/data_source/Remote/auth/signin_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +6,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../../Core/constant/route.dart';
 import '../../../Core/services/myservices.dart';
+import '../../../language.dart';
 
 
 class SplachScreen extends StatefulWidget {

@@ -33,7 +33,7 @@ class Notification extends StatelessWidget {
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  'Notification',
+                  '108'.tr,
                   style: TextStyle(
                     fontSize: screenWidth * 0.06,
                     fontWeight: FontWeight.w500,

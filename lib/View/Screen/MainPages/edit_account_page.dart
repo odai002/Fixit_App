@@ -10,58 +10,57 @@ import '../../Widgets/custom_textfield.dart';
 class EditAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    EditaccountController controller =Get.put(EditaccountController());
+    EditaccountController controller = Get.put(EditaccountController());
 
     controller.initializeFields(
         "odai",
         "odaisu@gmail.com",
         "1234567890",
         "123 Main St",
-      "odaiiiiiiiiiiis2",
-      "odaiiiiiiiiiiis2"
+        "odaiiiiiiiiiiis2",
+        "odaiiiiiiiiiiis2"
     );
 
     return Scaffold(
-        appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.black),
-    onPressed: () {
-          Get.back();
-    }
-    ),
-    ),
-            body:  Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Center(
-            child: Column(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+      ),
+      body: Padding(
+        padding:  const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.edit, color: Colors.purple, size: 48),
-                SizedBox(width:8,),
-                Text(
-                  'Edit Account',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-              const SizedBox(height:22,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.edit, color: Colors.purple, size: 48),
+                  const SizedBox(width: 8),
+                  Text(
+                    '101'.tr,
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 22),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:20,),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: CustomTextField(
-                  validator: (val){
+                  validator: (val) {
                     return validinput(val!, 2, 35, "username");
-
                   },
                   maxLength: 100,
                   controller: controller.username,
-                  name: "username...",
+                  name: "102".tr,
                   prefixIcon: Icons.person_rounded,
-                  prefixIconColor:const Color(0xff6A3BA8),
+                  prefixIconColor: const Color(0xff6A3BA8),
                   inputType: TextInputType.name,
                   textCapitalization: TextCapitalization.words,
                   suffixIcon: null,
@@ -69,53 +68,52 @@ class EditAccountPage extends StatelessWidget {
               ),
               const SizedBox(height: 22),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:20,),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: CustomTextField(
-                  validator: (val){
+                  validator: (val) {
                     return validinput(val!, 4, 100, "email");
-
-                  },                      maxLength: 100,
+                  },
+                  maxLength: 100,
                   controller: controller.email,
-                  name: "email...",
+                  name: "11".tr,
                   prefixIcon: Icons.email_rounded,
                   inputType: TextInputType.emailAddress,
                   textCapitalization: TextCapitalization.words,
                   suffixIcon: null,
-                  prefixIconColor:const Color(0xff6A3BA8),
+                  prefixIconColor: const Color(0xff6A3BA8),
                 ),
               ),
               const SizedBox(height: 22),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: CustomTextField(
                   validator: (val) {
                     return validinput(val!, 10, 25, "phone");
-
                   },
                   maxLength: 100,
                   controller: controller.phone,
-                  name: "phone",
+                  name: "103".tr,
                   prefixIcon: Icons.phone_android_rounded,
-                  prefixIconColor:const Color(0xff6A3BA8),
+                  prefixIconColor: const Color(0xff6A3BA8),
                   inputType: TextInputType.phone,
                   textCapitalization: TextCapitalization.words,
                   suffixIcon: null,
                 ),
               ),
               const SizedBox(height: 22),
-
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: GetBuilder<EditaccountController>(
                   builder: (controller) => Row(
                     children: [
                       DropdownMenuExample(
-                        items:controller.Country,
+                        items: controller.Country,
                         onSelected: (String value) {
                           controller.setCountry(value);
-                        },initialValue:(String value){
-                        controller.country;
-                      },
+                        },
+                        initialValue: (String value) {
+                          controller.country;
+                        },
                       ),
                       const SizedBox(width: 22),
                       DropdownMenuExample(
@@ -123,7 +121,7 @@ class EditAccountPage extends StatelessWidget {
                         onSelected: (String value) {
                           controller.setCity(value);
                         },
-                        initialValue:(String){
+                        initialValue: (String) {
                           controller.city;
                         },
                       ),
@@ -137,12 +135,11 @@ class EditAccountPage extends StatelessWidget {
                 child: CustomTextField(
                   validator: (val) {
                     return validinput(val!, 5, 100, "street");
-
                   },
                   maxLength: 100,
                   controller: controller.streetAddress,
-                  prefixIconColor:const Color(0xff6A3BA8),
-                  name: "streetAddress",
+                  prefixIconColor: const Color(0xff6A3BA8),
+                  name: "104".tr,
                   prefixIcon: Icons.streetview_rounded,
                   inputType: TextInputType.name,
                   textCapitalization: TextCapitalization.words,
@@ -151,72 +148,73 @@ class EditAccountPage extends StatelessWidget {
               ),
               const SizedBox(height: 22),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:20),
-                child: GetBuilder<EditaccountController>(builder:(controller) => CustomTextField(
-                  validator: (val){
-                    return validinput(val!, 8, 30, "password");
-                  },
-                  maxLength: 100,
-                  obscureText: controller.isshowpassword,
-                  controller: controller.password,
-                  name: "password",
-                  prefixIcon: Icons.lock,
-                  prefixIconColor:const Color(0xff6A3BA8),
-                  inputType: TextInputType.name,
-                  textCapitalization: TextCapitalization.words,
-                  suffixIcon: Icons.remove_red_eye,
-                  onTapIcon:(){
-                    controller.ShowPassword();
-                  },
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: GetBuilder<EditaccountController>(
+                  builder: (controller) => CustomTextField(
+                    validator: (val) {
+                      return validinput(val!, 8, 30, "password");
+                    },
+                    maxLength: 100,
+                    obscureText: controller.isshowpassword,
+                    controller: controller.password,
+                    name: "10".tr,
+                    prefixIcon: Icons.lock,
+                    prefixIconColor: const Color(0xff6A3BA8),
+                    inputType: TextInputType.name,
+                    textCapitalization: TextCapitalization.words,
+                    suffixIcon: Icons.remove_red_eye,
+                    onTapIcon: () {
+                      controller.ShowPassword();
+                    },
+                  ),
                 ),
               ),
               const SizedBox(height: 22),
               GetBuilder<EditaccountController>(
-                builder:(controller) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:20),
+                builder: (controller) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: CustomTextField(
-                    validator: (val){
-                      if(val != controller.password.text){
+                    validator: (val) {
+                      if (val != controller.password.text) {
                         return "password do not match";
-                      }else{
+                      } else {
                         return validinput(val!, 8, 30, "confirmPassword");
                       }
                     },
                     maxLength: 100,
                     obscureText: controller.isConfirmshowpassword,
-                    prefixIconColor:const Color(0xff6A3BA8),
+                    prefixIconColor: const Color(0xff6A3BA8),
                     controller: controller.confirmPassword,
-                    name: "confirmPassword",
+                    name: "105".tr,
                     prefixIcon: Icons.lock,
                     inputType: TextInputType.name,
                     textCapitalization: TextCapitalization.words,
                     suffixIcon: Icons.remove_red_eye,
-                    onTapIcon:(){
+                    onTapIcon: () {
                       controller.ShowConfirmPassword();
                     },
                   ),
                 ),
               ),
-              const SizedBox(height:45),
+              const SizedBox(height: 45),
               GetBuilder<EditaccountController>(
-                builder:(controller) => Padding(
+                builder: (controller) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 1),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GetBuilder<EditaccountController>(builder:(controller)=>
-                          CustomButton(
-                              fontSize: 12,
-                              height: 50,
-                              textcolor: 0xffFFFFFF,
-                              text: 'Edit',
-                              backgroundColor: const Color(0xff6A3BA8),
-                              width: 120,
-                              onPressed: () async{
-                                await controller.Edit();
-                              }
-                          ),
+                      GetBuilder<EditaccountController>(
+                        builder: (controller) => CustomButton(
+                          fontSize: 12,
+                          height: 50,
+                          textcolor: 0xffFFFFFF,
+                          text: '106'.tr,
+                          backgroundColor: const Color(0xff6A3BA8),
+                          width: 120,
+                          onPressed: () async {
+                            await controller.Edit();
+                          },
+                        ),
                       ),
                       const SizedBox(width: 22),
                       CustomButton(
@@ -224,7 +222,7 @@ class EditAccountPage extends StatelessWidget {
                         height: 50,
                         textcolor: 0xff6A3BA8,
                         width: 120,
-                        text: 'Cancel',
+                        text: '107'.tr,
                         backgroundColor: const Color(0xffFFFFFF),
                         onPressed: () {
                           controller.Cancel();
@@ -234,11 +232,10 @@ class EditAccountPage extends StatelessWidget {
                   ),
                 ),
               ),
-
-            ]
-    ),
-    )
-    ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

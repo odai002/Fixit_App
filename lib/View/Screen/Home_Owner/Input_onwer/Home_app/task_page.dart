@@ -28,7 +28,7 @@ class Taskpage extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "Task Creation",
+                  text: "21".tr,
                   style: GoogleFonts.getFont('Libre Caslon Text',
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
@@ -66,7 +66,7 @@ class Taskpage extends StatelessWidget {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Task Title:",
+                              text: "22".tr,
                               style: GoogleFonts.getFont('Libre Caslon Text',
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
@@ -79,7 +79,7 @@ class Taskpage extends StatelessWidget {
                       const SizedBox(width: 12),
                       CustomTextFieldVerify(
                         maxLine: 1,
-                        HintText: 'Type Title...',
+                        HintText: '23'.tr,
                         maxLength: 100,
                         controller: controller.titleController,
                         inputType: TextInputType.name,
@@ -100,7 +100,7 @@ class Taskpage extends StatelessWidget {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: "Task Description : ",
+                                text: "24".tr,
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
@@ -114,7 +114,7 @@ class Taskpage extends StatelessWidget {
                       const SizedBox(height: 12),
                       CustomTextFieldVerify(
                         maxLine: 20,
-                        HintText: 'Describe your task here...',
+                        HintText: '25'.tr,
                         maxLength: 400,
                         controller: controller.describeController,
                         inputType: TextInputType.name,
@@ -154,7 +154,7 @@ class Taskpage extends StatelessWidget {
                     maxLength: 100,
                     obscureText: false,
                     controller: controller.locationController,
-                    name: "Type the Location of your task..",
+                    name: "27".tr,
                     prefixIcon: Icons.streetview_rounded,
                     inputType: TextInputType.name,
                     prefixIconColor: const Color(0xff6A3BA8),
@@ -167,7 +167,7 @@ class Taskpage extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: "Task Picture: ",
+                            text: "28".tr,
                             style: GoogleFonts.getFont('Libre Caslon Text',
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
@@ -212,7 +212,7 @@ class Taskpage extends StatelessWidget {
                   CustomButton(
                     width: 250,
                     textcolor: 0xffffffff,
-                    text: 'Send Task',
+                    text: '29'.tr,
                     backgroundColor: const Color(0xff6A3BA8),
                     onPressed: () async{
                       controller.submitTask(contractor_id);

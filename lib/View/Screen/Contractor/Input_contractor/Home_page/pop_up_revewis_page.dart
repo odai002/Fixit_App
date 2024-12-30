@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ReviewPopup extends StatefulWidget {
-  const ReviewPopup({Key? key}) : super(key: key);
+  const ReviewPopup({super.key});
 
   @override
   State<ReviewPopup> createState() => _ReviewPopupState();

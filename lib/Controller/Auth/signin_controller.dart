@@ -30,21 +30,14 @@ class SigninControllerImp extends SigninController{
     var formdata = formstate8.currentState;
     if (formdata!.validate()) {
       try {
-        SigninService signinService = SigninService();
-
-        // استدعاء دالة تسجيل الدخول والحصول على التوكن
+        SigninService signinService=SigninService();
         String? token = await signinService.signIn(email.text, password.text);
 
         if (token != null) {
-          // جلب الدور من SharedPreferences
           String? role = await signinService.getUserType();
-
-          // الانتقال إلى الصفحة المناسبة بناءً على الدور
-          if (role == "homeowner") {
+          if (role == "admin") {
             Get.offNamed(AppRoute.HomePage);
-          } else if (role == "contractor") {
-            Get.offNamed(AppRoute.ContractorHomePage);
-          } else {
+          }else {
             Get.offNamed(AppRoute.SignIn);
           }
         } else {
@@ -56,16 +49,15 @@ class SigninControllerImp extends SigninController{
     }
   }
 
+ @override
+ ToPageForgetPassword() {
+   Get.offNamed(AppRoute.ForgetPassword);
+ }
 
  @override
-  ToPageForgetPassword() {
-    Get.offNamed(AppRoute.ForgetPassword);
-  }
-
-  @override
-  ToPageSignup() {
-    Get.toNamed(AppRoute.SignUp);
-  }
+ ToPageSignup() {
+   Get.toNamed(AppRoute.SignUp);
+ }
 @override
   void onInit() {
     email = TextEditingController();

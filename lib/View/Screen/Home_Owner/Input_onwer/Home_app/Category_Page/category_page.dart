@@ -8,7 +8,7 @@ import '../Category_Page/Category_Page_Components/Custom_Sorting_Text_B.dart';
 
 class CategoryPage extends StatelessWidget {
   bool ascending = true;
-   CategoryPage({super.key});
+  CategoryPage({super.key});
   final int categoryId = Get.arguments['category_id'];
 
   @override
@@ -17,7 +17,9 @@ class CategoryPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppBar(title: '',),
+      appBar: CustomAppBar(
+        title: '13'.tr,
+      ),
       bottomNavigationBar: SnackBarBody(),
       resizeToAvoidBottomInset: false,
       body: Column(
@@ -25,16 +27,16 @@ class CategoryPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: SortingSegmentedControl(
-              title: 'Filter',
-              buttonCaption: 'Locations near me',
+              title: '14'.tr,
+              buttonCaption: '15'.tr,
               onSelectionChanged: (int index) => controller.filterItems(index),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: SortingSegmentedControl(
-              title: 'Sort By',
-              buttonCaption: 'Rating',
+              title: '16'.tr,
+              buttonCaption: '17'.tr,
               onSelectionChanged: (int index) => controller.sortContractors(ascending),
             ),
           ),
@@ -45,7 +47,7 @@ class CategoryPage extends StatelessWidget {
               }
 
               if (controller.contractors.isEmpty) {
-                return const Center(child: Text('No contractors found'));
+                return Center(child: Text('18'.tr));
               }
               return ListView.builder(
                 padding: const EdgeInsets.all(25.0),
@@ -53,13 +55,13 @@ class CategoryPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final contractor = controller.contractors[index];
                   final contractor_id = contractor['id'];
-                  String buttonText = controller.buttonstate[contractor_id] ?? 'Hire Now';
+                  String buttonText = controller.buttonstate[contractor_id] ?? '19'.tr;
 
                   return SingleChildScrollView(
                     child: CustomCard(
                       image: Image.asset('assets/U.png'),
                       email: contractor['email'],
-                      desc: contractor['description'] ?? "No description provided",
+                      desc: contractor['description'] ?? "20".tr,
                       number: contractor['phone'],
                       name: contractor['username'],
                       category: contractor['category'],
@@ -70,7 +72,6 @@ class CategoryPage extends StatelessWidget {
                         controller.HireNow(contractor_id);
                       },
                     ),
-
                   );
                 },
               );

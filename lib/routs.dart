@@ -5,7 +5,6 @@ import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/Category_Page/
 import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/Home_page.dart';
 import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/task_page.dart';
 import 'package:fixit/View/Screen/MainPages/notification.dart';
-import 'package:fixit/View/Screen/language.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'Core/constant/route.dart';
 import 'View/Screen/Auth/forgetpassword/forgetpassword.dart';
@@ -49,8 +48,8 @@ List<GetPage<dynamic>>? routes =[
   GetPage(name:AppRoute.ContractorHomePage , page: () => const ContractorHomePage()),
   GetPage(name:AppRoute.TaskDetailsPage , page: () => TaskDetailsPage()),
   GetPage(name:AppRoute.ContractPage , page: () => const ContractPage()),
-  
-  
+
+
 
 
 

@@ -29,23 +29,83 @@ class SignupControllerImp extends SignupController{
     {'id': 12, 'name': 'Carpenter'},
   ];
 
-  List<String> Countries = ['Syria', 'Jordan', 'Lebanon', 'Saudi Arabia', 'UAE', 'Iraq'];
-  List<String> Cities = ['Damascus', 'Aleppo', 'Homs', 'Hama', 'Latakia', 'Tartus',
-    'Idlib', 'Deir ez-Zor', 'Al-Hasakah', 'Raqqa', 'Daraa',
-    'As-Suwayda', 'Quneitra'
-  ,'Amman', 'Zarqa', 'Irbid', 'Aqaba', 'Balqa', 'Madaba',
-    'Jerash', 'Mafraq', 'Karak', 'Tafilah', 'Ma\'an', 'Ajloun',
-      'Beirut', 'Mount Lebanon', 'North Lebanon', 'South Lebanon',
-      'Beqaa', 'Nabatieh',
-      'Riyadh', 'Makkah', 'Medina', 'Eastern Province', 'Asir',
-      'Tabuk', 'Hail', 'Jazan', 'Najran', 'Al Bahah', 'Al Jawf',
-      'Northern Borders',
-      'Abu Dhabi', 'Dubai', 'Sharjah', 'Ajman', 'Ras Al Khaimah',
-      'Fujairah', 'Umm Al Quwain',
-      'Baghdad', 'Basra', 'Mosul', 'Erbil', 'Sulaymaniyah',
-      'Karbala', 'Najaf', 'Kirkuk', 'Anbar', 'Diyala',
-      'Dhi Qar', 'Babil', 'Maysan', 'Wasit', 'Muthanna', 'Qadisiyyah'
-    ];
+  List<String> Countries = [
+    "30".tr,
+    "31".tr,
+    "32".tr,
+    "33".tr,
+    "34".tr,
+    "35".tr
+  ];
+
+  List<String> Cities = [
+    "36".tr,
+    "37".tr,
+    "38".tr,
+    "39".tr,
+    "40".tr,
+    "41".tr,
+    "42".tr,
+    "43".tr,
+    "44".tr,
+    "45".tr,
+    "46".tr,
+    "47".tr,
+    "48".tr,
+    "49".tr,
+    "50".tr,
+    "51".tr,
+    "52".tr,
+    "53".tr,
+    "54".tr,
+    "55".tr,
+    "56".tr,
+    "57".tr,
+    "58".tr,
+    "59".tr,
+    "60".tr,
+    "61".tr,
+    "62".tr,
+    "63".tr,
+    "64".tr,
+    "65".tr,
+    "66".tr,
+    "67".tr,
+    "68".tr,
+    "69".tr,
+    "70".tr,
+    "71".tr,
+    "72".tr,
+    "73".tr,
+    "74".tr,
+    "75".tr,
+    "76".tr,
+    "77".tr,
+    "78".tr,
+    "79".tr,
+    "80".tr,
+    "81".tr,
+    "82".tr,
+    "83".tr,
+    "84".tr,
+    "85".tr,
+    "86".tr,
+    "87".tr,
+    "88".tr,
+    "89".tr,
+    "90".tr,
+    "91".tr,
+    "92".tr,
+    "93".tr,
+    "94".tr,
+    "95".tr,
+    "96".tr,
+    "97".tr,
+    "98".tr,
+    "99".tr,
+    "100".tr
+  ];
+
 
   GlobalKey<FormState> formstate9 = GlobalKey<FormState>();
   late TextEditingController username;
@@ -89,7 +149,7 @@ ShowConfirmPassword(){
            username: username.text,
            email: email.text,
            phone: phone.text,
-           category_id: role == "homeowner" ? null : category_id, // تعيين null إذا كان homeowner
+           category_id: role == "homeowner" ? null : category_id,
            role: role,
            country: country,
            city: city,
@@ -123,7 +183,7 @@ ShowConfirmPassword(){
   update();
 }
   void setService(String serviceName) {
-    final service = services.firstWhere((item) => item['name'] == serviceName);    //بستخدم firstWhere للبحث عن الخدمة في قائمة services التي يكون اسمها (name) مطابقًا لـ serviceName الممرر كمعامل للدالة
+    final service = services.firstWhere((item) => item['name'] == serviceName);
     category_id = service['id'];
     selectedService = serviceName;
     update();
