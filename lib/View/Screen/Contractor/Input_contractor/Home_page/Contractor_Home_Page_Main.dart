@@ -33,7 +33,7 @@ class ContractorHomePage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 22, left: 12, top: 12),
                   child: Text(
-                    "Today",
+                    "155".tr,
                     style: GoogleFonts.getFont(
                       'Libre Caslon Text',
                       fontWeight: FontWeight.w500,

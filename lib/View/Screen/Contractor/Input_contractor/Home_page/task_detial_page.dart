@@ -21,7 +21,7 @@ class TaskDetailsPage extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "Task Details",
+                  text: "142".tr,
                   style: GoogleFonts.getFont(
                     'Libre Caslon Text',
                     fontWeight: FontWeight.w500,
@@ -53,7 +53,7 @@ class TaskDetailsPage extends StatelessWidget {
               children: [
                 const SizedBox(height: 12),
                 Text(
-                  "Task Title:",
+                  "143".tr,
                   style: GoogleFonts.getFont(
                     'Libre Caslon Text',
                     fontWeight: FontWeight.w500,
@@ -68,7 +68,7 @@ class TaskDetailsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 33),
                 Text(
-                  "Task Description:",
+                  "144".tr,
                   style: GoogleFonts.getFont(
                     'Libre Caslon Text',
                     fontWeight: FontWeight.w500,
@@ -83,7 +83,7 @@ class TaskDetailsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 33),
                 Text(
-                  "Task Location:",
+                  "145".tr,
                   style: GoogleFonts.getFont(
                     'Libre Caslon Text',
                     fontWeight: FontWeight.w500,
@@ -98,7 +98,7 @@ class TaskDetailsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 33),
                 Text(
-                  "Task street",
+                  "146".tr,
                   style: GoogleFonts.getFont(
                     'Libre Caslon Text',
                     fontWeight: FontWeight.w500,
@@ -113,7 +113,7 @@ class TaskDetailsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 50),
                 Text(
-                  "Task Picture:",
+                  "147".tr,
                   style: GoogleFonts.getFont(
                     'Libre Caslon Text',
                     fontWeight: FontWeight.w500,
@@ -124,7 +124,7 @@ class TaskDetailsPage extends StatelessWidget {
                 const SizedBox(height: 12),
                 Wrap(
                   children: controller.taskImages.isEmpty
-                      ? [const Text('No images available')]
+                      ? [ Text("148".tr)]
                       : controller.taskImages.map((imageUrl) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -143,7 +143,7 @@ class TaskDetailsPage extends StatelessWidget {
                   child: CustomButton(
                     width: 250,
                     textcolor: 0xffffffff,
-                    text: 'back',
+                    text: "149".tr,
                     backgroundColor: const Color(0xff6A3BA8),
                     onPressed: () {
                       controller.back();

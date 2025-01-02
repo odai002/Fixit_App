@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ReviewPopup extends StatefulWidget {
   const ReviewPopup({super.key});
@@ -21,9 +22,9 @@ class _ReviewPopupState extends State<ReviewPopup> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
+             Center(
               child: Text(
-                "Write A Review",
+                "150".tr,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -34,8 +35,8 @@ class _ReviewPopupState extends State<ReviewPopup> {
             const SizedBox(height: 20),
             Row(
               children: [
-                const Text(
-                  "Rate the Service :",
+                 Text(
+                  "151".tr,
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 const SizedBox(width: 10),
@@ -60,15 +61,15 @@ class _ReviewPopupState extends State<ReviewPopup> {
               ],
             ),
             const SizedBox(height: 20),
-            const Text(
-              "Your Review :",
+             Text(
+              "152".tr,
               style: TextStyle(fontSize: 16, color: Colors.black),
             ),
             const SizedBox(height: 10),
             TextField(
               maxLines: 4,
               decoration: InputDecoration(
-                hintText: "Type Something....",
+                hintText: "153".tr,
                 hintStyle: const TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -90,8 +91,8 @@ class _ReviewPopupState extends State<ReviewPopup> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: const Text(
-                  "Submit",
+                child:  Text(
+                  "154".tr,
                   style: TextStyle(color: Colors.white), // Button text color
                 ),
               ),

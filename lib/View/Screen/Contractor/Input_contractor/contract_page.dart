@@ -27,7 +27,7 @@ class ContractPage extends StatelessWidget {
                 children: [
                   TextSpan(
 
-                    text:  "Contract",
+                    text:  "114".tr,
                     style: GoogleFonts.getFont('Libre Caslon Text',
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
@@ -69,7 +69,7 @@ class ContractPage extends StatelessWidget {
                             children: [
                               TextSpan(
 
-                                text:  "Task Title:",
+                                text:  "22".tr,
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
@@ -115,7 +115,7 @@ class ContractPage extends StatelessWidget {
                             children: [
                               TextSpan(
 
-                                text:  "Payment Dead Line",
+                                text:  "123".tr,
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
@@ -131,7 +131,7 @@ class ContractPage extends StatelessWidget {
 
                       CustomTextFieldVerify(
                         maxLine: 1,
-                        HintText: 'type date....',
+                        HintText: "124".tr,
                         maxLength: 100,
                         controller: controller.dateController,
                         prefixIcon: null,
@@ -157,7 +157,7 @@ class ContractPage extends StatelessWidget {
                               children: [
                                 TextSpan(
 
-                                  text:  "Task Description : ",
+                                  text:  "24".tr,
                                   style: GoogleFonts.getFont('Libre Caslon Text',
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12,
@@ -221,7 +221,7 @@ class ContractPage extends StatelessWidget {
                         children: [
                           TextSpan(
 
-                            text:  "Task Picture: ",
+                            text:  "28".tr,
                             style: GoogleFonts.getFont('Libre Caslon Text',
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
@@ -275,7 +275,7 @@ class ContractPage extends StatelessWidget {
                             children: [
                               TextSpan(
 
-                                text:  "Task Price : ",
+                                text:  "125".tr,
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
@@ -292,7 +292,7 @@ class ContractPage extends StatelessWidget {
 
                       CustomTextFieldVerify(
                         maxLine: 1,
-                        HintText: 'type price....',
+                        HintText: "126".tr,
                         maxLength: 100,
                         controller: controller.priceController,
                         prefixIcon: null,
@@ -313,7 +313,7 @@ class ContractPage extends StatelessWidget {
                             children: [
                               TextSpan(
 
-                                text:  "Task Done Date :",
+                                text:  "127".tr,
                                 style: GoogleFonts.getFont('Libre Caslon Text',
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
@@ -330,7 +330,7 @@ class ContractPage extends StatelessWidget {
 
                       CustomTextFieldVerify(
                         maxLine: 1,
-                        HintText: 'type date...',
+                        HintText: "124".tr,
                         maxLength: 100,
                         controller: controller.deadlineController,
                         prefixIcon: null,
@@ -349,7 +349,7 @@ class ContractPage extends StatelessWidget {
                         children: [
                           TextSpan(
 
-                            text:  "Task Location : ",
+                            text:  "128".tr,
                             style: GoogleFonts.getFont('Libre Caslon Text',
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
@@ -498,7 +498,7 @@ class ContractPage extends StatelessWidget {
                   child:   CustomButton(
                     width: 250,
                     textcolor: 0xffffffff,
-                    text: 'Send Contract',
+                    text: "129".tr,
                     backgroundColor: const Color(0xff6A3BA8),
                     onPressed: () {
                       controller.sendContract(controller.taskData['id']);

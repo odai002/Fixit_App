@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../Widgets/Custom_Bottom_naf_Bar.dart';
@@ -11,20 +12,20 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   // Static content variables
-  final String location = "Syria / Rif Damashq / 55666 Olive Viaduct";
-  final String userName = "Mhamad alshame";
-  final String profession = "Electrician";
-  final String phoneNumber = "0945113366";
-  final String email = "Mh233@gmail.com";
-  final String descriptionHint = "Type Something....";
-  final String reviewTitle = "Reviews (24)";
+  final String location = "130".tr;
+  final String userName = "131".tr;
+  final String profession = "132".tr;
+  final String phoneNumber = "133".tr;
+  final String email = "134".tr;
+  final String descriptionHint = "135".tr;
+  final String reviewTitle = "136".tr;
   final double overallRating = 4.5;
 
   // Review content
-  final String reviewerName = "John Lemon";
+  final String reviewerName = "137".tr;
   final double reviewerRating = 3.5;
-  final String reviewDate = "Today";
-  final String reviewDescription = "Did a good job, but could be faster.";
+  final String reviewDate = "138".tr;
+  final String reviewDescription = "139".tr;
 
   // Image list
   List<XFile> images = []; // Stores images selected from the gallery
@@ -185,7 +186,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 SizedBox(height: 16),
                 // Description
-                Text("Description:", style: TextStyle(fontSize: 16)),
+                Text("140".tr, style: TextStyle(fontSize: 16)),
                 SizedBox(height: 8),
                 TextField(
                   decoration: InputDecoration(
@@ -224,7 +225,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {
                         // See more reviews
                       },
-                      child: Text("See more."),
+                      child: Text("140".tr),
                     ),
                   ],
                 ),
