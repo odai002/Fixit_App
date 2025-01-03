@@ -64,7 +64,7 @@ class _SnackBarBodyState extends State<SnackBarBody> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              navigateToPage(1, '/settings');  // Navigate to Settings Page
+              navigateToPage(1, AppRoute.Setting);  // Navigate to Settings Page
             },
             icon: pageIndex == 1
                 ? const Icon(
@@ -82,7 +82,7 @@ class _SnackBarBodyState extends State<SnackBarBody> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              navigateToPage(2, '/profile');  // Navigate to Profile Page
+              navigateToPage(2, AppRoute.Profile);  // Navigate to Profile Page
             },
             icon: pageIndex == 2
                 ? const Icon(

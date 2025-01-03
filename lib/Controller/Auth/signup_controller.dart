@@ -158,7 +158,7 @@ ShowConfirmPassword(){
            password_confirmation: password_confirmation.text,
          );
 
-         print("User data: ${user.toJson()}"); // طباعة بيانات المستخدم
+         print("User data: ${user.toJson()}");
 
          SignupService signupService = SignupService();
          await signupService.registerUser(user);

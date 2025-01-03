@@ -32,12 +32,13 @@ class SigninControllerImp extends SigninController{
       try {
         SigninService signinService=SigninService();
         String? token = await signinService.signIn(email.text, password.text);
-
+        String? role = await signinService.getUserType();
         if (token != null) {
-          String? role = await signinService.getUserType();
-          if (role == "admin") {
+          if (role == "homeowner") {
             Get.offNamed(AppRoute.HomePage);
-          }else {
+          } else if (role == "contractor") {
+            Get.offNamed(AppRoute.ContractorHomePage);
+          } else {
             Get.offNamed(AppRoute.SignIn);
           }
         } else {

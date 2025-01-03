@@ -42,7 +42,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
 
   final String addTaskDonePictureLabel = 'Add Task Done Picture';
   final String sendReceiptButtonText = 'Send Receipt';
-  final Color sendReceiptButtonColor = Color(0xff6A3BA8);
+  final Color sendReceiptButtonColor = const Color(0xff6A3BA8);
 
   // Dynamic variables
   List<XFile?> taskDonePictures = [];
@@ -81,7 +81,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -93,7 +93,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
             _buildStaticField(taskDonePriceLabel, taskDonePriceValue),
             _buildLocationSection(),
             _buildDynamicImageSection(addTaskDonePictureLabel),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: () {},
@@ -103,11 +103,11 @@ class _ReceiptPageState extends State<ReceiptPage> {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   padding:
-                  EdgeInsets.symmetric(vertical: 16.0, horizontal: 40.0),
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 40.0),
                 ),
                 child: Text(
                   sendReceiptButtonText,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -123,27 +123,27 @@ class _ReceiptPageState extends State<ReceiptPage> {
 
   Widget _buildStaticField(String label, String value) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 16.0),
+      padding: const EdgeInsets.only(bottom: 16.0),
       child: Row(
         children: [
           Expanded(
             flex: 1,
             child: Text(
               '$label :',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
             ),
           ),
           Expanded(
             flex: 2,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
               decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
                 value,
-                style: TextStyle(fontSize: 14.0),
+                style: const TextStyle(fontSize: 14.0),
               ),
             ),
           ),
