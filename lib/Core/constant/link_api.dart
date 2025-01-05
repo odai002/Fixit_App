@@ -1,5 +1,5 @@
 class AppLink {
-  static const String servrer = "http://10.0.2.2:8000/api";
+  static const String servrer = "http://192.168.1.111:8000/api";
 
   // ====================================
 //Auth
@@ -16,6 +16,13 @@ class AppLink {
 
   static const String myContracts = "$servrer/get_all_my_contract";
 
+  static String AcceptContract(int contractId) => "$servrer/acc_rej_contract/$contractId";
+
+  static String RejactContract(int contractId) => "$servrer/acc_rej_contract/$contractId";
+
+
+
+
 
   //Contractor
 
@@ -23,7 +30,9 @@ class AppLink {
   static String deleteTask(int taskId) => "$servrer/acc_rej_task/$taskId";
   static String acceptTask(int taskId) => "$servrer/acc_rej_task/$taskId";
   static String sendContract(int taskId) => "$servrer/send_contract/$taskId";
+ //MainPages
 
+  static const String EditProfile = "$servrer/editprofile";
 
 
 }

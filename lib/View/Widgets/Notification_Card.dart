@@ -8,14 +8,20 @@ class NotificationCard extends StatelessWidget {
   final List<String>? buttons;
   final double screenWidth;
   final double screenHeight;
+  final int contractId;
+  final Function(int) onAccept;
+  final Function(int) onReject;
 
-  NotificationCard({
+  NotificationCard({super.key,
     required this.username,
     required this.message,
     required this.time,
     this.buttons,
     required this.screenWidth,
     required this.screenHeight,
+    required this.contractId,
+    required this.onAccept,
+    required this.onReject,
   });
 
   @override
@@ -111,10 +117,10 @@ class NotificationCard extends StatelessWidget {
                     minimumSize: Size(0, 0),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child: Text(
+                  child: const Text(
                     "Show Contract",
                     style: TextStyle(
-                      color: const Color(0xff6A3BA8),
+                      color: Color(0xff6A3BA8),
                       fontWeight: FontWeight.w600,
                       decoration: TextDecoration.underline,
                     ),
@@ -133,7 +139,11 @@ class NotificationCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ElevatedButton(
                       onPressed: () {
-                        // Handle Accept/Refuse action
+                        if (buttonText == 'Accept') {
+                          onAccept(contractId);
+                        } else if (buttonText == 'Refuse') {
+                          onReject(contractId);
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: buttonText == 'Accept'

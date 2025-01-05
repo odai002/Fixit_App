@@ -29,6 +29,11 @@ class AppRoute{
   //Main Pages
   static const String  EditAccountPage= "/editaccountpage";
   static const String Notification = "/notification";
+  static const String Setting = "/setting";
+  static const String Profile = "/profile";
+
+
+
 
 
 }

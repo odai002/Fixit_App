@@ -1,10 +1,12 @@
 import 'package:fixit/View/Screen/Contractor/Input_contractor/Home_page/Contractor_Home_Page_Main.dart';
 import 'package:fixit/View/Screen/Contractor/Input_contractor/Home_page/task_detial_page.dart';
 import 'package:fixit/View/Screen/Contractor/Input_contractor/contract_page.dart';
+import 'package:fixit/View/Screen/Contractor/Input_contractor/profile_page.dart';
 import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/Category_Page/category_page.dart';
 import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/Home_page.dart';
 import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/task_page.dart';
 import 'package:fixit/View/Screen/MainPages/notification.dart';
+import 'package:fixit/View/Screen/MainPages/setting_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'Core/constant/route.dart';
 import 'View/Screen/Auth/forgetpassword/forgetpassword.dart';
@@ -38,6 +40,9 @@ List<GetPage<dynamic>>? routes =[
   //Main Pages
   GetPage(name:AppRoute.EditAccountPage , page: () => EditAccountPage()),
   GetPage(name:AppRoute.Notification , page: () => const Notification()),
+  GetPage(name:AppRoute.Setting , page: () => const SettingPage()),
+  GetPage(name:AppRoute.Profile , page: () =>  ProfilePage()),
+
 
   //Home Onwer
   GetPage(name:AppRoute.HomePage , page: () => HomePage()),

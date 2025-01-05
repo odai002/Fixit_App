@@ -35,12 +35,6 @@ class SigninService {
       throw Exception("Error occurred during sign in: $e");
     }
   }
-  Future<void> signout()async{
-     SharedPreferences sharedpref = await SharedPreferences.getInstance();
-     sharedpref.remove('token');
-     token=null;
-     isAuthenticated=false;
-  }
 
   Future<String?> getToken()async{
     SharedPreferences prefs= await SharedPreferences.getInstance();

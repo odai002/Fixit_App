@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fixit/Controller/HomeOnwer/notification_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -61,13 +63,37 @@ class Notification extends StatelessWidget {
                     itemCount: controller.contracts.length,
                     itemBuilder: (context, index) {
                       final contract = controller.contracts[index];
+                      final contractId = contract['id']; // الحصول على معرف العقد
+
                       return NotificationCard(
-                        username: "odai",
-                        message: "has accepted your tasks and here is your recipt :${contract['data']}",
+                        username: "Username Placeholder",
+                        message: "Your message here...",
                         time: "22:00",
+                        contractId: contractId, // تمرير معرف العقد
                         screenWidth: screenWidth,
                         screenHeight: screenHeight,
                         buttons: const ['Accept', 'Refuse'],
+                        onAccept: (id) async {
+                          try {
+                            bool success = await controller.service.AcceptContract(id);
+                            if (success) {
+                              controller.contracts.removeAt(index);
+                            }
+                          } catch (e) {
+                            log("Error accepting contract: $e");
+                          }
+                        },
+                        onReject: (id) async {
+                          try {
+                            bool success = await controller.service.RejectContract(id);
+                            if (success) {
+                              controller.contracts.removeAt(index);
+                            }
+                          } catch (e) {
+                            log("Error rejecting contract: $e");
+                          }
+                        },
+
                       );
                     },
                   );

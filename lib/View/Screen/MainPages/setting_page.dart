@@ -1,17 +1,23 @@
+import 'package:fixit/Controller/Mainpages/settings_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../Core/constant/route.dart';
 import '../../Widgets/Custom_Bottom_naf_Bar.dart';
 
 class SettingPage extends StatelessWidget {
+  const SettingPage({super.key});
+
   @override
   Widget build(BuildContext context) {
+    SettingsController settingsController =Get.put(SettingsController());
     return Scaffold(
       bottomNavigationBar: SnackBarBody(), // Your custom SnackBar component
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true, // Ensures the title is centered
-        title: Center(
+        title: const Center(
           child: Row(
             mainAxisSize: MainAxisSize.min, // Ensures the content is compact
             children: [
@@ -34,14 +40,8 @@ class SettingPage extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              leading: Icon(Icons.layers_outlined, color: Color(0xff6A3BA8)),
-              title: Text('App Version'),
-              trailing: Text('1.0.0', style: TextStyle(color: Colors.grey)),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.language_outlined, color: Color(0xff6A3BA8)),
-              title: Text('Language'),
+              leading: const Icon(Icons.language_outlined, color: Color(0xff6A3BA8)),
+              title: const Text('Language'),
               trailing: DropdownButton<String>(
                 value: 'English',
                 underline: Container(),
@@ -56,28 +56,28 @@ class SettingPage extends StatelessWidget {
                 },
               ),
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.edit_outlined, color: Color(0xff6A3BA8)),
-              title: Text('Edit Account'),
+              leading: const Icon(Icons.edit_outlined, color: Color(0xff6A3BA8)),
+              title: const Text('Edit Account'),
               onTap: () {
-                // Navigate to Edit Account
-              },
+                  Get.offNamed(AppRoute.EditAccountPage);
+                },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.article_outlined, color: Color(0xff6A3BA8)),
-              title: Text('Terms and Services'),
+              leading: const Icon(Icons.article_outlined, color: Color(0xff6A3BA8)),
+              title: const Text('Terms and Services'),
               onTap: () {
                 // Navigate to Terms and Services
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.logout_outlined, color: Color(0xff6A3BA8)),
-              title: Text('Logout'),
+              leading: const Icon(Icons.logout_outlined, color: Color(0xff6A3BA8)),
+              title: const Text('Logout'),
               onTap: () {
-                // Handle logout
+                settingsController.logout();
               },
             ),
           ],
