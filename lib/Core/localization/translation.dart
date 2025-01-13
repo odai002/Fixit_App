@@ -159,6 +159,26 @@ class MyTranslation extends Translations {
       "153": "اكتب شيئًا....",
       "154": "إرسال",
       "155": "اليوم",
+      "156": "الإعدادات",
+      "157": "اللغة",
+      "158": "تعديل الحساب",
+      "159":"تسجيل الخروج",
+      "160":"الشروط والخدمات",
+      "161":"الانكليزية",
+      "162": "العربية",
+      '163': 'الشروط والخدمات',
+      '164': 'الموافقة على الشروط',
+      '165': 'من خلال استخدام تطبيق Fixit، أنت توافق على الالتزام بهذه الشروط والاحكام. إذا كنت لا توافق على أي جزء منها، يمكنك التوقف عن الاستخدام.',
+      '166': 'مسؤوليات المستخدمين',
+      '167': 'جميع المستخدمين مسؤولون عن تقديم معلومات دقيقة في ملفاتهم الشخصية والمهام الخاصة بهم. قد يؤدي سوء استخدام المنصة إلى تعليق الحساب.',
+      '168': 'سياسة الدفع والاسترداد',
+      '169': 'يتم التعامل مع المدفوعات بشكل آمن داخل التطبيق. يتم مراجعة الطلبات الخاصة بالاسترداد ولن تتم معالجتها إلا إذا تم انتهاك الشروط.',
+      '170': 'اتفاقيات المهام والخدمات',
+      '171': 'تسهل Fixit اتفاقيات المهام بين أصحاب المنازل والمستقلين، ولكنها غير مسؤولة عن النزاعات التي تنشأ من إتمام المهام أو جودة الخدمة.',
+      '172': 'سياسة الخصوصية',
+      '173': 'نحن نقدر خصوصيتك ونتأكد من أن بياناتك مخزنة بأمان. لمزيد من التفاصيل، يرجى مراجعة صفحة سياسة الخصوصية الخاصة بنا.',
+      '174': 'التغييرات على الشروط',
+      '175': 'تحتفظ Fixit بالحق في تحديث هذه الشروط في أي وقت. سيتم إخطار المستخدمين بأي تغييرات كبيرة من خلال إشعارات داخل التطبيق.',
 
 
 
@@ -319,6 +339,29 @@ class MyTranslation extends Translations {
       "153": "Type Something....",
       "154": "Submit",
       "155": "Today",
+      "156": "Settings",
+      "157": "Language",
+      "158": "Edit Account",
+      "159":"Logout",
+      "160":"Terms and Service",
+      "161":"English",
+      "162":"Arabic",
+      '163': 'Terms and Services',
+      '164': 'Agreement to Terms',
+      '165': 'By using the Fixit application, you agree to comply with and be bound by these terms. If you disagree with any part, you may discontinue usage.',
+      '166': 'User Responsibilities',
+      '167': 'All users are responsible for providing accurate information in their profiles and tasks. Misuse of the platform may lead to account suspension.',
+      '168': 'Payment and Refund Policy',
+      '169': 'Payments are handled securely within the app. Refunds are subject to review and will only be processed if terms are breached.',
+      '170': 'Task and Service Agreements',
+      '171': 'Fixit facilitates task agreements between homeowners and freelancers but is not liable for disputes arising from task completion or service quality.',
+      '172': 'Privacy Policy',
+      '173': 'We value your privacy and ensure that your data is stored securely. For details, please review our Privacy Policy page.',
+      '174': 'Changes to Terms',
+      '175': 'Fixit reserves the right to update these terms at any time. Users will be notified of significant changes through in-app notifications.',
+
+
+
 
 
     }

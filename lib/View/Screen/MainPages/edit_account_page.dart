@@ -8,6 +8,8 @@ import '../../Widgets/Custom_DropdownMenu.dart';
 import '../../Widgets/custom_textfield.dart';
 
 class EditAccountPage extends StatelessWidget {
+  const EditAccountPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     EditaccountController controller = Get.put(EditaccountController());

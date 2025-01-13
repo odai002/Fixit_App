@@ -8,6 +8,8 @@ class SettingsController extends GetxController{
   logout(){
     myservices.sharedPreferences.clear();
     Get.offAllNamed(AppRoute.SignIn);
-
+  }
+  toPageTermService(){
+    Get.offNamed(AppRoute.TermsAndServicesPage);
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Core/constant/route.dart';
+import '../../../Core/localization/changelocal.dart';
 import '../../Widgets/Custom_Bottom_naf_Bar.dart';
 
 class SettingPage extends StatelessWidget {
@@ -11,21 +12,22 @@ class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SettingsController settingsController =Get.put(SettingsController());
+    LocaleController localeController = Get.find();
     return Scaffold(
       bottomNavigationBar: SnackBarBody(), // Your custom SnackBar component
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true, // Ensures the title is centered
-        title: const Center(
+        title: Center(
           child: Row(
             mainAxisSize: MainAxisSize.min, // Ensures the content is compact
             children: [
-              Icon(Icons.settings_outlined, color: Color(0xff6A3BA8), size: 30),
-              SizedBox(width: 8), // Add spacing between the icon and text
+              const Icon(Icons.settings_outlined, color: Color(0xff6A3BA8), size: 30),
+              const SizedBox(width: 8), // Add spacing between the icon and text
               Text(
-                'Settings',
-                style: TextStyle(
+                '156'.tr,
+                style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -41,25 +43,34 @@ class SettingPage extends StatelessWidget {
           children: [
             ListTile(
               leading: const Icon(Icons.language_outlined, color: Color(0xff6A3BA8)),
-              title: const Text('Language'),
+              title:  Text('157'.tr),
               trailing: DropdownButton<String>(
-                value: 'English',
+                value: localeController.Language?.languageCode == 'en' ? 'English' : 'Arabic',
                 underline: Container(),
-                items: ['English', 'Arabic'].map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+                items:  [
+                  DropdownMenuItem<String>(
+                    value: 'English',
+                    child: Text('161'.tr),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: 'Arabic',
+                    child: Text('162'.tr),
+                  ),
+                ],
                 onChanged: (value) {
-                  // Handle language change
+                  if (value == 'English') {
+                    localeController.ChangeLanguage('en');
+                  } else if (value == 'Arabic') {
+                    localeController.ChangeLanguage('ar');
+                  }
                 },
               ),
+
             ),
             const Divider(),
             ListTile(
               leading: const Icon(Icons.edit_outlined, color: Color(0xff6A3BA8)),
-              title: const Text('Edit Account'),
+              title:  Text('158'.tr),
               onTap: () {
                   Get.offNamed(AppRoute.EditAccountPage);
                 },
@@ -67,15 +78,15 @@ class SettingPage extends StatelessWidget {
             const Divider(),
             ListTile(
               leading: const Icon(Icons.article_outlined, color: Color(0xff6A3BA8)),
-              title: const Text('Terms and Services'),
+              title:  Text('160'.tr),
               onTap: () {
-                // Navigate to Terms and Services
-              },
+                settingsController.toPageTermService();
+                },
             ),
             const Divider(),
             ListTile(
               leading: const Icon(Icons.logout_outlined, color: Color(0xff6A3BA8)),
-              title: const Text('Logout'),
+              title:  Text('159'.tr),
               onTap: () {
                 settingsController.logout();
               },

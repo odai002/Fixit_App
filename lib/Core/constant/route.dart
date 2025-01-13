@@ -31,6 +31,7 @@ class AppRoute{
   static const String Notification = "/notification";
   static const String Setting = "/setting";
   static const String Profile = "/profile";
+  static const String TermsAndServicesPage="/termsAndServicesPage";
 
 
 

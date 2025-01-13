@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import '../../../Widgets/Custom_Bottom_naf_Bar.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -122,7 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 images.removeAt(index - 1);
                               });
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.remove_circle,
                               color: Colors.red,
                             ),
@@ -132,22 +134,22 @@ class _ProfilePageState extends State<ProfilePage> {
                     );
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 // User details
                 Row(
                   children: [
                     CircleAvatar(
                       radius: 30,
                       backgroundColor: Colors.grey[300],
-                      child: Icon(Icons.person, size: 40, color: Colors.grey),
+                      child: const Icon(Icons.person, size: 40, color: Colors.grey),
                     ),
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           userName,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -175,7 +177,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       icon: Icon(Icons.edit, color: primaryColor),
                       onPressed: () {
@@ -184,10 +186,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 // Description
-                Text("140".tr, style: TextStyle(fontSize: 16)),
-                SizedBox(height: 8),
+                Text("140".tr, style: const TextStyle(fontSize: 16)),
+                const SizedBox(height: 8),
                 TextField(
                   decoration: InputDecoration(
                     hintText: descriptionHint,
@@ -197,7 +199,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   maxLines: 4,
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 // Reviews section
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

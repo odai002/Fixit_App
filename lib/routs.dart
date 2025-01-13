@@ -17,6 +17,7 @@ import 'View/Screen/Auth/forgetpassword/veryfi_code_page.dart';
 import 'View/Screen/Auth/forgetpassword/veryfiycode_signup.dart';
 import 'View/Screen/Auth/sign_in_page.dart';
 import 'View/Screen/Auth/sign_up_page.dart';
+import 'View/Screen/MainPages/Terms_and_services_page.dart';
 import 'View/Screen/MainPages/edit_account_page.dart';
 import 'View/Screen/Splach_screen/splach_screen.dart';
 
@@ -40,8 +41,10 @@ List<GetPage<dynamic>>? routes =[
   //Main Pages
   GetPage(name:AppRoute.EditAccountPage , page: () => EditAccountPage()),
   GetPage(name:AppRoute.Notification , page: () => const Notification()),
-  GetPage(name:AppRoute.Setting , page: () => const SettingPage()),
-  GetPage(name:AppRoute.Profile , page: () =>  ProfilePage()),
+  GetPage(name:AppRoute.Setting , page: () =>  SettingPage()),
+  GetPage(name:AppRoute.Profile , page: () =>  const ProfilePage()),
+  GetPage(name:AppRoute.TermsAndServicesPage , page: () =>  TermsAndServicesPage()),
+
 
 
   //Home Onwer
@@ -51,8 +54,9 @@ List<GetPage<dynamic>>? routes =[
 
   //Contractor
   GetPage(name:AppRoute.ContractorHomePage , page: () => const ContractorHomePage()),
-  GetPage(name:AppRoute.TaskDetailsPage , page: () => TaskDetailsPage()),
+  GetPage(name:AppRoute.TaskDetailsPage , page: () => const TaskDetailsPage()),
   GetPage(name:AppRoute.ContractPage , page: () => const ContractPage()),
+
 
 
 

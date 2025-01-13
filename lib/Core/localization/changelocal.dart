@@ -11,21 +11,18 @@ class LocaleController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
     String? savedLang = myServices.sharedPreferences.getString("lang");
     if (savedLang != null) {
-      Language = Locale(savedLang); // إذا كانت اللغة مخزنة، استخدمها
+      Language = Locale(savedLang);
     } else {
-      Language = Locale("en");
+      Language = const Locale("en");
     }
   }
 
   void ChangeLanguage(String langcode) {
     Locale locale = Locale(langcode);
-
     myServices.sharedPreferences.setString("lang", langcode);
     myServices.sharedPreferences.setBool("isLanguageSelected", true);
-
     Language = locale;
     Get.updateLocale(locale);
   }
