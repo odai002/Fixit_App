@@ -1,24 +1,17 @@
 import 'dart:io';
+import 'package:fixit/Controller/Contractor/add_protfilio.dart';
+import 'package:fixit/Controller/HomeOnwer/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../Widgets/Custom_Bottom_naf_Bar.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class ProfilePage extends StatelessWidget {
+  AddProtfilio controller =AddProtfilio();
+  ProfilePage({super.key});
 
-  @override
-  _ProfilePageState createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
   // Static content variables
-  final String location = "130".tr;
-  final String userName = "131".tr;
   final String profession = "132".tr;
-  final String phoneNumber = "133".tr;
-  final String email = "134".tr;
   final String descriptionHint = "135".tr;
   final String reviewTitle = "136".tr;
   final double overallRating = 4.5;
@@ -30,10 +23,10 @@ class _ProfilePageState extends State<ProfilePage> {
   final String reviewDescription = "139".tr;
 
   // Image list
-  List<XFile> images = []; // Stores images selected from the gallery
+  final RxList<XFile> images = <XFile>[].obs; // Stores images selected from the gallery
 
   // Custom color
-  final Color primaryColor = Color(0xff6A3BA8); // Updated purple color
+  final Color primaryColor = const Color(0xff6A3BA8); // Updated purple color
 
   // Function to pick images from the gallery
   Future<void> _pickImage() async {
@@ -41,30 +34,29 @@ class _ProfilePageState extends State<ProfilePage> {
     final XFile? pickedImage = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedImage != null) {
-      setState(() {
-        images.add(pickedImage);
-      });
+      images.add(pickedImage);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    ProfileController controller=Get.put(ProfileController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            // Add back navigation functionality
+            Get.back();
           },
         ),
         title: Row(
           children: [
             Icon(Icons.location_on, color: primaryColor),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Expanded(
               child: Text(
-                location,
-                style: TextStyle(color: Colors.black, fontSize: 14),
+                '${controller.country.value} / ${controller.city.value} / ${controller.streetAddress.value}',
+                style: const TextStyle(color: Colors.black, fontSize: 14),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -82,57 +74,57 @@ class _ProfilePageState extends State<ProfilePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Image grid with add button
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8,
-                  ),
-                  itemCount: images.length + 1,
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return GestureDetector(
-                        onTap: _pickImage,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey[200],
+                Obx(
+                      () => GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
+                    ),
+                    itemCount: images.length + 1,
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return GestureDetector(
+                          onTap: _pickImage,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Icon(Icons.add, color: primaryColor, size: 40),
+                          ),
+                        );
+                      }
+                      return Stack(
+                        children: [
+                          ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Icon(Icons.add, color: primaryColor, size: 40),
-                        ),
-                      );
-                    }
-                    return Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.file(
-                            File(images[index - 1].path),
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                            height: double.infinity,
-                          ),
-                        ),
-                        Positioned(
-                          top: 4,
-                          right: 4,
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                images.removeAt(index - 1);
-                              });
-                            },
-                            child: const Icon(
-                              Icons.remove_circle,
-                              color: Colors.red,
+                            child: Image.file(
+                              File(images[index - 1].path),
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                              height: double.infinity,
                             ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
+                          Positioned(
+                            top: 4,
+                            right: 4,
+                            child: GestureDetector(
+                              onTap: () {
+                                images.removeAt(index - 1);
+                              },
+                              child: const Icon(
+                                Icons.remove_circle,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                 ),
                 const SizedBox(height: 16),
                 // User details
@@ -148,7 +140,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          userName,
+                          "${controller.username}",
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -164,15 +156,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         Row(
                           children: [
                             Icon(Icons.phone, size: 16, color: primaryColor),
-                            SizedBox(width: 4),
-                            Text(phoneNumber),
+                            const SizedBox(width: 4),
+                            Text("${controller.phone}"),
                           ],
                         ),
                         Row(
                           children: [
                             Icon(Icons.email, size: 16, color: primaryColor),
-                            SizedBox(width: 4),
-                            Text(email),
+                            const SizedBox(width: 4),
+                            Text("${controller.email}"),
                           ],
                         ),
                       ],
@@ -208,9 +200,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         Text(
                           reviewTitle,
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Row(
                           children: List.generate(
                             5,
@@ -231,12 +223,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 // Single Review
                 ListTile(
                   leading: CircleAvatar(
                     backgroundColor: Colors.grey[300],
-                    child: Icon(Icons.person, color: Colors.grey),
+                    child: const Icon(Icons.person, color: Colors.grey),
                   ),
                   title: Text(reviewerName),
                   subtitle: Column(
@@ -252,7 +244,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(reviewDescription),
                     ],
                   ),
@@ -263,8 +255,9 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
+/*
       bottomNavigationBar: SnackBarBody(),
+*/
     );
   }
 }
-

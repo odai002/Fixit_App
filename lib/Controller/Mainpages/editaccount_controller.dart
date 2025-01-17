@@ -1,5 +1,6 @@
 import 'package:fixit/data/data_source/Remote/MainPages/edit_profile_service.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EditaccountController extends GetxController{
@@ -88,8 +89,9 @@ class EditaccountController extends GetxController{
   late String city='Syria';
   late String country ='Damascus';
   late TextEditingController streetAddress = TextEditingController();
+  late TextEditingController old_password = TextEditingController();
   late TextEditingController password = TextEditingController();
-  late TextEditingController confirmPassword = TextEditingController();
+  late TextEditingController password_confirmation = TextEditingController();
 
   bool showContractorDropdown = false;
   bool isshowpassword = true;
@@ -103,21 +105,35 @@ class EditaccountController extends GetxController{
     isConfirmshowpassword = isConfirmshowpassword == true ? false : true ;
     update();
   }
+  Edit() async {
+    var formdata = FormState0.currentState;
+    if (formdata!.validate()) {
+      try {
+        EditProfileService editProfileService = EditProfileService();
+        await editProfileService.editProfile(
+          username.text,
+          phone.text,
+          city,
+          country,
+          streetAddress.text,
+        );
+        if (password.text.isNotEmpty && password_confirmation.text.isNotEmpty) {
+          if (password.text != password_confirmation.text) {
+            Get.snackbar("Error", "Passwords do not match");
+            return;
+          }
+          await editProfileService.updatePassword(old_password.text, password.text, password_confirmation.text);
+        }
 
-Edit()async{
-  var formdata = FormState0.currentState;
-  if (formdata!.validate()) {
-    try {
-      EditProfileService editProfileService = EditProfileService();
-      await editProfileService.editProfile(
-          username.text, phone.text, password.text,city,
-          country, /*confirmPassword.text,*/ streetAddress.text);
-    }catch(e){
-      print("Error during edit profile: $e");
+        Get.snackbar("Success", "Profile updated successfully",backgroundColor:Colors.green,colorText:Colors.white);
+
+      } catch (e) {
+        print("Error during edit profile: $e");
+        Get.snackbar("Error", "Failed to update profile",backgroundColor:Colors.red);
       }
     }
+  }
 
-}
   Cancel() {
     Get.back();
   }
@@ -139,7 +155,7 @@ Edit()async{
     phone = TextEditingController();
     streetAddress=TextEditingController();
     password = TextEditingController();
-    confirmPassword = TextEditingController();
+    password_confirmation = TextEditingController();
     super.onInit();
   }
 }

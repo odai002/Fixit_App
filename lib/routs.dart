@@ -6,6 +6,7 @@ import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/Category_Page/
 import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/Home_page.dart';
 import 'package:fixit/View/Screen/Home_Owner/Input_onwer/Home_app/task_page.dart';
 import 'package:fixit/View/Screen/MainPages/notification.dart';
+import 'package:fixit/View/Screen/MainPages/profile_homeowner.dart';
 import 'package:fixit/View/Screen/MainPages/setting_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'Core/constant/route.dart';
@@ -42,7 +43,7 @@ List<GetPage<dynamic>>? routes =[
   GetPage(name:AppRoute.EditAccountPage , page: () => EditAccountPage()),
   GetPage(name:AppRoute.Notification , page: () => const Notification()),
   GetPage(name:AppRoute.Setting , page: () =>  SettingPage()),
-  GetPage(name:AppRoute.Profile , page: () =>  const ProfilePage()),
+  GetPage(name:AppRoute.Profile , page: () =>  const Profile()),
   GetPage(name:AppRoute.TermsAndServicesPage , page: () =>  TermsAndServicesPage()),
 
 
@@ -56,6 +57,8 @@ List<GetPage<dynamic>>? routes =[
   GetPage(name:AppRoute.ContractorHomePage , page: () => const ContractorHomePage()),
   GetPage(name:AppRoute.TaskDetailsPage , page: () => const TaskDetailsPage()),
   GetPage(name:AppRoute.ContractPage , page: () => const ContractPage()),
+  GetPage(name:AppRoute.ProfileContractor , page: () =>  ProfilePage()),
+
 
 
 

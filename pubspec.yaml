@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_svg: ^2.0.10+1
   textfields: ^0.0.3
+  firebase_core:
+  firebase_messaging:
   link_text: ^0.2.1
   lottie: ^3.1.2
   image_picker: ^1.1.2

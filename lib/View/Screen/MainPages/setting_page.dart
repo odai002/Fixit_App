@@ -14,7 +14,9 @@ class SettingPage extends StatelessWidget {
     SettingsController settingsController =Get.put(SettingsController());
     LocaleController localeController = Get.find();
     return Scaffold(
+/*
       bottomNavigationBar: SnackBarBody(), // Your custom SnackBar component
+*/
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:fixit/data/data_source/Remote/auth/signin_service.dart';
 import 'package:get/get.dart';
 import '../../Core/constant/route.dart';
 import '../../data/data_source/Remote/contractor/task_service.dart';
@@ -79,7 +80,10 @@ class ContractorHomeController extends GetxController {
   }
 
   @override
-  void onInit() {
+  void onInit() async{
+    SigninService signinService=SigninService();
+    String? token= await signinService.getToken();
+    print(token);
     super.onInit();
     fetchedTasks();
   }

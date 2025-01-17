@@ -48,7 +48,7 @@ class ContractorHomePage extends StatelessWidget {
                   if (controller.isLoading.value) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (controller.tasks.isEmpty) {
-                    return const Center(child: Text("No tasks available"));
+                    return  Center(child: Text("192".tr));
                   } else {
                     return ListView.builder(
                       itemCount: controller.tasks.length,

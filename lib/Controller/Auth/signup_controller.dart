@@ -107,7 +107,7 @@ class SignupControllerImp extends SignupController{
   ];
 
 
-  GlobalKey<FormState> formstate9 = GlobalKey<FormState>();
+  GlobalKey<FormState> formstate59 = GlobalKey<FormState>();
   late TextEditingController username;
   late TextEditingController email;
   late TextEditingController phone;
@@ -142,7 +142,7 @@ ShowConfirmPassword(){
 
   @override
   Register() async {
-      var formdata = formstate9.currentState;
+      var formdata = formstate59.currentState;
       if (formdata!.validate()) {
        try{
          User user = User(

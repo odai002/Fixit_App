@@ -179,7 +179,23 @@ class MyTranslation extends Translations {
       '173': 'نحن نقدر خصوصيتك ونتأكد من أن بياناتك مخزنة بأمان. لمزيد من التفاصيل، يرجى مراجعة صفحة سياسة الخصوصية الخاصة بنا.',
       '174': 'التغييرات على الشروط',
       '175': 'تحتفظ Fixit بالحق في تحديث هذه الشروط في أي وقت. سيتم إخطار المستخدمين بأي تغييرات كبيرة من خلال إشعارات داخل التطبيق.',
-
+      "176": "تنظيف",
+      "177": "الأعمال اليدوية",
+      "178": "نقل الأثاث",
+      "179": "التكييف والتدفئة",
+      "180": "تنسيق الحدائق",
+      "181": "السباكة",
+      "182": "إزالة الثلوج",
+      "183": "إلكترونيات",
+      "184": "إصلاح الأسقف",
+      "185": "تنظيف السجاد",
+      "186": "الأرضيات",
+      "187": "نجار",
+      "188":"الموقع",
+      "189":"الملف الشخصي" ,
+      "190":"كلمة المرور القديمة" ,
+      "191":"كلمة السر الجديدة" ,
+      "192":"لايوجد مهمات متاحة"
 
 
     },
@@ -359,7 +375,23 @@ class MyTranslation extends Translations {
       '173': 'We value your privacy and ensure that your data is stored securely. For details, please review our Privacy Policy page.',
       '174': 'Changes to Terms',
       '175': 'Fixit reserves the right to update these terms at any time. Users will be notified of significant changes through in-app notifications.',
-
+      "176": "Cleaning",
+      "177": "Handyman",
+      "178": "Movers",
+      "179": "HVAC",
+      "180": "Landscaping",
+      "181": "Plumbing",
+      "182": "Snow Removal",
+      "183": "Electronic",
+      "184": "Roof Repair",
+      "185": "Carpet Clean",
+      "186": "Flooring",
+      "187": "Carpenter",
+      "188":"Location",
+      "189":"Profile",
+      "190":"old Password",
+      "191":"new Password",
+      "192":"No tasks available",
 
 
 

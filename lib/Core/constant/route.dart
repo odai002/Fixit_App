@@ -25,6 +25,8 @@ class AppRoute{
   static const String  ContractorHomePage= "/contractorhomepage";
   static const String  ContractPage= "/contractpage";
   static const String  TaskDetailsPage= "/taskdetailspage";
+  static const String  ProfileContractor= "/profilecontractor";
+
 
   //Main Pages
   static const String  EditAccountPage= "/editaccountpage";

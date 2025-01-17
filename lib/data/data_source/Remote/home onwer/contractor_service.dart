@@ -52,7 +52,7 @@ class ContractorService {
     SigninService signinService = SigninService();
     String? token = await signinService.getToken();
     const url = AppLink.getcategory;
-    String baseUrl = "http://192.168.43.178:8000/storage/";
+    String baseUrl = AppLink.Category;
     try {
       final res = await http.get(Uri.parse(url), headers: {"Authorization": "Bearer $token"});
 

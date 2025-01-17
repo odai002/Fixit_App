@@ -15,7 +15,6 @@ class _ContractorProfilePageState extends State<ContractorProfilePage> {
     'assets/9.jpg',
     'assets/8.jpg',
     'assets/7.jpg',
-    // Add more images here
   ];
 
   final String contractorName = "Mhamad Alshame";

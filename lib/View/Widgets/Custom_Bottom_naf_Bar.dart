@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class SnackBarBody extends StatefulWidget {
-  SnackBarBody({super.key});
+  const SnackBarBody({super.key});
 
   @override
   _SnackBarBodyState createState() => _SnackBarBodyState();
@@ -82,7 +82,7 @@ class _SnackBarBodyState extends State<SnackBarBody> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              navigateToPage(2, AppRoute.Profile);  // Navigate to Profile Page
+              Get.toNamed(AppRoute.Profile);  // Navigate to Profile Page
             },
             icon: pageIndex == 2
                 ? const Icon(
