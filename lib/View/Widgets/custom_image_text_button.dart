@@ -1,21 +1,17 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-
 
 class ImageTextButton extends StatelessWidget {
   final ImageProvider imageProvider;
   final VoidCallback onRemove;
-  
 
-  const ImageTextButton({super.key, required this.imageProvider, required this.onRemove});
+  const ImageTextButton(
+      {super.key, required this.imageProvider, required this.onRemove});
 
   void _resizeImage(BuildContext context) {
     showDialog(
       context: context,
-      builder: (_) => Dialog(
-        child: Image(image: imageProvider)
-        ),
-      );
+      builder: (_) => Dialog(child: Image(image: imageProvider)),
+    );
   }
 
   @override

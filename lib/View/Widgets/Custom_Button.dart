@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,7 +11,6 @@ class CustomButton extends StatelessWidget {
     required this.textcolor,
     required this.height,
     required this.fontSize,
-
   }) : super(key: key);
   final double fontSize;
   final double height;
@@ -28,8 +26,9 @@ class CustomButton extends StatelessWidget {
       child: Container(
         // alignment: Alignment.center,
         decoration: BoxDecoration(
-            border: Border.all(color: Color(0xff6A3BA8),),
-
+            border: Border.all(
+              color: Color(0xff6A3BA8),
+            ),
             color: backgroundColor,
             borderRadius: BorderRadius.circular(11),
             boxShadow: [
@@ -42,12 +41,12 @@ class CustomButton extends StatelessWidget {
         width: width,
         height: height,
         margin: const EdgeInsets.all(2),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical:14),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: GoogleFonts.getFont('Libre Caslon Text',
-
+          style: GoogleFonts.getFont(
+            'Libre Caslon Text',
             fontWeight: FontWeight.w500,
             fontSize: fontSize,
             color: Color(textcolor),

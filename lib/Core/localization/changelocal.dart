@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../services/myservices.dart';
+import '../../Services/myservices.dart';
 
 class LocaleController extends GetxController {
   Locale? Language;

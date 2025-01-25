@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: unnecessary_null_comparison
 
+import 'package:flutter/material.dart';
 
 class StarDisplayWidget extends StatelessWidget {
   final int value;
@@ -7,12 +8,11 @@ class StarDisplayWidget extends StatelessWidget {
   final Widget unfilledStar;
 
   const StarDisplayWidget({
-    Key? key,
+    super.key,
     this.value = 0,
     required this.filledStar,
     required this.unfilledStar,
-  })  : assert(value != null),
-        super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +26,11 @@ class StarDisplayWidget extends StatelessWidget {
 }
 
 class StarDisplay extends StarDisplayWidget {
-  const StarDisplay({Key? key, int value = 0})
+  const StarDisplay({super.key, super.value})
       : super(
-    key: key,
-    value: value,
-    filledStar: const Icon(Icons.star),
-    unfilledStar: const Icon(Icons.star_border),
-  );
+          filledStar: const Icon(Icons.star),
+          unfilledStar: const Icon(Icons.star_border),
+        );
 }
 
 class StarRating extends StatelessWidget {
@@ -42,13 +40,12 @@ class StarRating extends StatelessWidget {
   final IconData unfilledStar;
 
   const StarRating({
-    Key? key,
+    super.key,
     required this.onChanged,
     this.value = 0,
     required this.filledStar,
     required this.unfilledStar,
-  })  : assert(value != null),
-        super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +57,13 @@ class StarRating extends StatelessWidget {
         return IconButton(
           onPressed: onChanged != null
               ? () {
-            onChanged(value == index + 1 ? index : index + 1);
-          }
+                  onChanged(value == index + 1 ? index : index + 1);
+                }
               : null,
           color: index < value ? color : null,
           iconSize: size,
           icon: Icon(
-            index < value ? filledStar ?? Icons.star : unfilledStar ?? Icons.star_border,
+            index < value ? filledStar : unfilledStar,
           ),
           padding: EdgeInsets.zero,
           tooltip: "${index + 1} of 5",

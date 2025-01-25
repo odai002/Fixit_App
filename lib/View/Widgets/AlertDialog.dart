@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-showAlertDialog({required BuildContext context, required String title, required String content}) {
+showAlertDialog(
+    {required BuildContext context,
+    required String title,
+    required String content}) {
   return showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(title ?? ""),
-          content: Text(content ?? ""),
+          title: Text(title),
+          content: Text(content),
           actions: [
             TextButton(
               onPressed: () {

@@ -10,15 +10,15 @@ class SnackBarBody extends StatefulWidget {
   _SnackBarBodyState createState() => _SnackBarBodyState();
 }
 
-class _SnackBarBodyState extends State<SnackBarBody> {
-  int pageIndex = 0;
+int pageIndex = 0;
 
+class _SnackBarBodyState extends State<SnackBarBody> {
   // This method ensures the state is updated before navigation
   void navigateToPage(int index, String route) {
     setState(() {
-      pageIndex = index;  // Update pageIndex first
+      pageIndex = index; // Update pageIndex first
     });
-    Get.toNamed(route);  // Then navigate to the route
+    Get.toNamed(route); // Then navigate to the route
   }
 
   @override
@@ -37,8 +37,7 @@ class _SnackBarBodyState extends State<SnackBarBody> {
                 blurRadius: 17,
                 spreadRadius: 3,
                 offset: Offset.fromDirection(90))
-          ]
-      ),
+          ]),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -46,73 +45,74 @@ class _SnackBarBodyState extends State<SnackBarBody> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              navigateToPage(0, AppRoute.HomePage);  // Navigate to Home Page
+              navigateToPage(0, AppRoute.HomePage); // Navigate to Home Page
             },
             icon: pageIndex == 0
                 ? const Icon(
-              Icons.home_rounded,
-              color: Colors.white,
-              size: 21,
-            )
+                    Icons.home_rounded,
+                    color: Colors.white,
+                    size: 21,
+                  )
                 : const Icon(
-              Icons.home_rounded,
-              color: Colors.grey,  // Gray when not on Home Page
-              size: 21,
-            ),
+                    Icons.home_rounded,
+                    color: Colors.grey, // Gray when not on Home Page
+                    size: 21,
+                  ),
           ),
           // Settings Icon Button
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              navigateToPage(1, AppRoute.Setting);  // Navigate to Settings Page
+              navigateToPage(1, AppRoute.Setting); // Navigate to Settings Page
             },
             icon: pageIndex == 1
                 ? const Icon(
-              Icons.settings,
-              color: Colors.white,
-              size: 21,
-            )
+                    Icons.settings,
+                    color: Colors.white,
+                    size: 21,
+                  )
                 : const Icon(
-              Icons.settings,
-              color: Color(0xff9B6CD7),
-              size: 21,
-            ),
+                    Icons.settings,
+                    color: Color(0xff9B6CD7),
+                    size: 21,
+                  ),
           ),
           // Profile Icon Button
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              Get.toNamed(AppRoute.Profile);  // Navigate to Profile Page
+              Get.toNamed(AppRoute.Profile); // Navigate to Profile Page
             },
             icon: pageIndex == 2
                 ? const Icon(
-              Icons.person,
-              color: Colors.white,
-              size: 21,
-            )
+                    Icons.person,
+                    color: Colors.white,
+                    size: 21,
+                  )
                 : const Icon(
-              Icons.person,
-              color: Color(0xff9B6CD7),
-              size: 21,
-            ),
+                    Icons.person,
+                    color: Color(0xff9B6CD7),
+                    size: 21,
+                  ),
           ),
           // Notification Icon Button
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              navigateToPage(3, AppRoute.Notification);  // Navigate to Notification Page
+              navigateToPage(
+                  3, AppRoute.Notification); // Navigate to Notification Page
             },
             icon: pageIndex == 3
                 ? const Icon(
-              Icons.notifications,
-              color: Colors.white,
-              size: 21,
-            )
+                    Icons.notifications,
+                    color: Colors.white,
+                    size: 21,
+                  )
                 : const Icon(
-              Icons.notifications,
-              color: Color(0xff9B6CD7),
-              size: 21,
-            ),
+                    Icons.notifications,
+                    color: Color(0xff9B6CD7),
+                    size: 21,
+                  ),
           ),
         ],
       ),

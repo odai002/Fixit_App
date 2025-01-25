@@ -18,7 +18,6 @@ validinput(String val, int min, int max, String type) {
     }
   }
 
-
   if (type == "street") {
     // شرط للتحقق من أن عنوان الشارع يحتوي فقط على حروف وأرقام
     if (!RegExp(r'^[a-zA-Z0-9\s]+$').hasMatch(val)) {
